@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { mockWorks } from "@/lib/mockData";
+import { PlaceholderImage } from "@/components/PlaceholderImage";
 
 export default function WorksSection() {
   const displayWorks = mockWorks.slice(0, 3);
@@ -40,11 +40,10 @@ export default function WorksSection() {
           >
             <Link href={`/works/${work.id}`}>
               <div className="absolute inset-0 z-10 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
-              <Image 
-                src={work.img} 
-                alt={work.title} 
-                fill 
-                className="object-cover transition-transform duration-700 group-hover:scale-105" 
+              <PlaceholderImage 
+                label={work.category} 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                iconSize={36} 
               />
               <div className="absolute bottom-0 left-0 p-8 z-20 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                 <span className="text-primary font-sans text-xs font-bold tracking-widest mb-3 block uppercase">{work.category}</span>

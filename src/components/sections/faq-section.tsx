@@ -13,19 +13,19 @@ const EASE_OUT = [0.76, 0, 0.24, 1] as const;
 const faqs = [
   {
     question: "設計・施工の対応エリアを教えてください。",
-    answer: "基本的には日本全国対応可能です。東京都内および近郊エリア以外でもご相談を承っておりますので、お問い合わせフォームよりお気軽にご連絡ください。"
+    answer: "東京都・神奈川県・埼玉県・千葉県を中心に、関東全域に対応しております。\n大規模プロジェクトについては全国対応も承っております。\nまずはお気軽にお問い合わせください。"
   },
   {
     question: "デモ建築株式会社の強みは何ですか？",
-    answer: "長年培ってきた「確かな構造設計力」と、洗練された「シルクのような繊細な意匠設計」の両立です。また、これらを具現化する高い施工品質も当社の大きな強みとして評価されています。"
+    answer: "創業65年以上の実績と、一級建築士を含む有資格者が多数在籍している点です。\n設計から施工・アフターフォローまで自社一貫体制で対応するため、\n品質管理が徹底されており、お客様に安心してお任せいただけます。"
   },
   {
     question: "個人の住宅リノベーションも依頼できますか？",
-    answer: "はい、可能です。「RESIDENTIAL（ハイエンド住宅・リノベーション）」部門にて、お客様のライフスタイルに合わせた唯一無二の空間設計および施工をご提供しております。"
+    answer: "はい、もちろん対応しております。個人のお客様の住宅リノベーションから、\n大規模商業施設の建設まで、規模を問わずお受けしております。\nまずは無料相談をご利用ください。現地調査から丁寧に対応いたします。"
   },
   {
     question: "設計から施工までの一貫対応は可能ですか？",
-    answer: "可能です。設計と施工を当社で一貫して担うことで、初期設計の思想をディテールに至るまで正確に反映させることが可能です。"
+    answer: "可能です。企画・設計・施工・監理・アフターフォローを\nすべて自社内で一貫して行っております。\n窓口が一本化されることで、スムーズなコミュニケーションと\nコスト削減が実現できます。"
   }
 ];
 
@@ -56,7 +56,7 @@ export default function FAQSection() {
                 <AccordionTrigger className="text-left font-sans text-base md:text-lg hover:no-underline hover:text-primary transition-colors py-6">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-foreground/70 font-sans leading-relaxed text-sm md:text-base pb-6">
+                <AccordionContent className="text-foreground/70 font-sans leading-relaxed text-sm md:text-base pb-6 whitespace-pre-line">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

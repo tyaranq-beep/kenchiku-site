@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { QrCode } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -24,6 +25,7 @@ const formSchema = z.object({
   company: z.string().optional(),
   email: z.string().email({ message: "有効なメールアドレスを入力してください。" }),
   phone: z.string().optional(),
+  constructionType: z.string().min(1, { message: "工事種別を選択してください。" }),
   message: z.string().min(10, { message: "お問い合わせ内容は10文字以上で入力してください。" }),
 });
 
@@ -35,6 +37,7 @@ export default function ContactPage() {
       company: "",
       email: "",
       phone: "",
+      constructionType: "",
       message: "",
     },
   });
@@ -54,7 +57,7 @@ export default function ContactPage() {
         
         <div className="relative z-20 text-center px-6">
           <motion.h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-serif text-primary tracking-widest mb-6"
+            className="text-4xl md:text-6xl lg:text-7xl font-serif text-[#d4a843] tracking-widest mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -93,7 +96,7 @@ export default function ContactPage() {
                       <FormItem>
                         <FormLabel className="text-foreground/80 font-sans tracking-widest text-xs">お名前 <span className="text-primary">*</span></FormLabel>
                         <FormControl>
-                          <Input placeholder="建築 太郎" className="bg-surface-container-highest border-border/20 rounded-none h-12 focus-visible:ring-primary focus-visible:border-primary" {...field} />
+                          <Input placeholder="建築 太郎" className="bg-surface-container-highest border-border/20 rounded-none h-12 focus-visible:ring-[#d4a843] focus-visible:border-[#d4a843]" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -106,7 +109,7 @@ export default function ContactPage() {
                       <FormItem>
                         <FormLabel className="text-foreground/80 font-sans tracking-widest text-xs">会社名・組織名 <span className="text-foreground/40 pb-1">(任意)</span></FormLabel>
                         <FormControl>
-                          <Input placeholder="株式会社○○" className="bg-surface-container-highest border-border/20 rounded-none h-12 focus-visible:ring-primary focus-visible:border-primary" {...field} />
+                          <Input placeholder="株式会社○○" className="bg-surface-container-highest border-border/20 rounded-none h-12 focus-visible:ring-[#d4a843] focus-visible:border-[#d4a843]" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -120,7 +123,7 @@ export default function ContactPage() {
                         <FormItem>
                           <FormLabel className="text-foreground/80 font-sans tracking-widest text-xs">メールアドレス <span className="text-primary">*</span></FormLabel>
                           <FormControl>
-                            <Input type="email" placeholder="example@domain.com" className="bg-surface-container-highest border-border/20 rounded-none h-12 focus-visible:ring-primary focus-visible:border-primary" {...field} />
+                            <Input type="email" placeholder="example@domain.com" className="bg-surface-container-highest border-border/20 rounded-none h-12 focus-visible:ring-[#d4a843] focus-visible:border-[#d4a843]" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -133,13 +136,47 @@ export default function ContactPage() {
                         <FormItem>
                           <FormLabel className="text-foreground/80 font-sans tracking-widest text-xs">電話番号 <span className="text-foreground/40 pb-1">(任意)</span></FormLabel>
                           <FormControl>
-                            <Input type="tel" placeholder="03-XXXX-XXXX" className="bg-surface-container-highest border-border/20 rounded-none h-12 focus-visible:ring-primary focus-visible:border-primary" {...field} />
+                            <Input type="tel" placeholder="03-XXXX-XXXX" className="bg-surface-container-highest border-border/20 rounded-none h-12 focus-visible:ring-[#d4a843] focus-visible:border-[#d4a843]" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
                   </div>
+                  
+                  {/* Construction Type Select */}
+                  <FormField
+                    control={form.control}
+                    name="constructionType"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-foreground/80 font-sans tracking-widest text-xs">工事種別 <span className="text-primary">*</span></FormLabel>
+                        <FormControl>
+                          <div className="relative">
+                            <select 
+                              className="flex h-12 w-full border border-border/20 bg-surface-container-highest px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50 rounded-none focus-visible:ring-[#d4a843] focus-visible:border-[#d4a843] appearance-none" 
+                              {...field}
+                            >
+                              <option value="" disabled>選択してください</option>
+                              <option value="新築・建築工事">新築・建築工事</option>
+                              <option value="外壁・屋根工事">外壁・屋根工事</option>
+                              <option value="リフォーム・改修">リフォーム・改修</option>
+                              <option value="足場・仮設工事">足場・仮設工事</option>
+                              <option value="造園・外構工事">造園・外構工事</option>
+                              <option value="解体・土木工事">解体・土木工事</option>
+                              <option value="空調・設備工事">空調・設備工事</option>
+                              <option value="その他">その他</option>
+                            </select>
+                            <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center px-2 text-foreground/50">
+                              <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                          </div>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
                   <FormField
                     control={form.control}
                     name="message"
@@ -149,7 +186,7 @@ export default function ContactPage() {
                         <FormControl>
                           <Textarea 
                             placeholder="具体的なご相談内容をご記入ください" 
-                            className="bg-surface-container-highest border-border/20 rounded-none min-h-[200px] resize-y focus-visible:ring-primary focus-visible:border-primary" 
+                            className="bg-surface-container-highest border-border/20 rounded-none min-h-[200px] resize-y focus-visible:ring-[#d4a843] focus-visible:border-[#d4a843]" 
                             {...field} 
                           />
                         </FormControl>
@@ -158,7 +195,7 @@ export default function ContactPage() {
                     )}
                   />
                   
-                  <Button type="submit" className="w-full h-14 rounded-none bg-primary text-primary-foreground font-sans font-bold tracking-widest text-sm hover:bg-white transition-colors duration-500 mt-8">
+                  <Button type="submit" className="w-full h-14 rounded-none bg-[#d4a843] text-[#061423] font-sans font-bold tracking-widest text-sm hover:bg-white transition-colors duration-500 mt-8">
                     送信する
                   </Button>
                 </form>
@@ -174,44 +211,39 @@ export default function ContactPage() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="bg-surface-container-low border border-border/10 p-8 md:p-12 h-fit lg:sticky lg:top-32"
             >
-              <h2 className="text-xl font-serif text-primary tracking-widest mb-8 uppercase">本社</h2>
+              <h2 className="text-2xl font-serif text-foreground tracking-widest mb-10">OFFICE INFO</h2>
               
-              <div className="space-y-6 font-sans text-sm text-foreground/80 mb-12">
+              <div className="space-y-8 font-sans text-sm text-foreground/80 mb-12">
                 <div>
-                  <p className="font-bold text-foreground mb-2">株式会社モノリス＆シルク</p>
-                  <p>〒000-0000</p>
-                  <p>東京都〇〇区〇〇1-2-3</p>
-                  <p>デモビル 99F</p>
+                  <h3 className="text-[#d4a843] text-xs tracking-widest uppercase mb-2">LOCATION</h3>
+                  <p className="leading-relaxed">〒107-0062<br/>東京都港区南青山 5-10-23<br/>MONOLITH BLDG 4F</p>
                 </div>
                 
-                <div className="pt-4 border-t border-border/10">
-                  <p className="mb-2"><span className="text-primary font-bold mr-4">T.</span> 00-0000-0000</p>
-                  <p><span className="text-primary font-bold mr-4">E.</span> info@monolith-silk.demo</p>
+                <div>
+                  <h3 className="text-[#d4a843] text-xs tracking-widest uppercase mb-2">DIRECT LINE</h3>
+                  <p className="text-foreground text-[20px] font-medium tracking-wider">03-XXXX-XXXX</p>
+                </div>
+
+                <div>
+                  <h3 className="text-[#d4a843] text-xs tracking-widest uppercase mb-2">EMAIL</h3>
+                  <p className="tracking-wide">info@monolith-silk.arch</p>
+                </div>
+
+                <div>
+                  <h3 className="text-[#d4a843] text-xs tracking-widest uppercase mb-2">HOURS</h3>
+                  <p className="tracking-wide">平日 9:00〜18:00（土日祝休）</p>
                 </div>
               </div>
 
-              {/* LINE Banner */}
-              <div className="mb-12">
-                <div className="bg-[#06C755]/10 border border-[#06C755]/30 p-8 text-center hover:bg-[#06C755]/20 transition-colors duration-300 cursor-pointer flex flex-col items-center">
-                  <div className="w-12 h-12 bg-[#06C755] rounded-full flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(6,199,85,0.4)]">
-                    <span className="text-white font-bold text-xl leading-none">L</span>
+              {/* Official LINE Banner */}
+              <div className="bg-[#1b2d40] border border-border/10 p-8 text-center flex flex-col items-center">
+                  <div className="mb-6">
+                    <QrCode className="w-[60px] h-[60px] text-[#d4a843]" />
                   </div>
-                  <p className="text-[#06C755] font-sans font-bold text-sm tracking-widest mb-2">LINEでのご相談はこちら</p>
-                  <p className="text-foreground/60 font-sans text-xs">QRコードをスキャンして友だち追加</p>
-                </div>
-              </div>
-
-              {/* Map SVG プレースホルダー */}
-              <div className="relative w-full aspect-[4/3] bg-surface-container-highest border border-border/20 overflow-hidden cursor-pointer group">
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                  <svg width="56" height="56" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-30">
-                    <path d="M50 20 C38 20 28 30 28 42 C28 56 50 80 50 80 C50 80 72 56 72 42 C72 30 62 20 50 20 Z" stroke="#d4a843" strokeWidth="2"/>
-                    <circle cx="50" cy="42" r="8" fill="#d4a843" opacity=".4"/>
-                  </svg>
-                  <span className="text-primary font-sans text-xs tracking-widest font-bold bg-background/90 px-6 py-3 border border-primary/30 shadow-2xl">
-                    マップで見る
-                  </span>
-                </div>
+                  <h3 className="text-foreground font-sans font-bold text-sm tracking-widest mb-4">Official LINE</h3>
+                  <p className="text-foreground/70 font-sans text-xs leading-relaxed max-w-[200px] mx-auto">
+                    QRコードをスキャンしてLINEでのお問い合わせも承っております。
+                  </p>
               </div>
             </motion.div>
           </div>

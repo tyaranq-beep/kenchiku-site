@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import BeforeAfterSlider from "@/components/ui/before-after-slider";
 import { mockWorks } from "@/lib/mockData";
+import { PlaceholderImage } from "@/components/PlaceholderImage";
 
 const EASE_OUT = [0.76, 0, 0.24, 1] as const;
 
@@ -86,26 +86,22 @@ export default function WorkDetail({ params }: { params: { id: string } }) {
             <span className="text-primary font-sans text-xs tracking-widest">VISUAL ARCHIVE</span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-auto md:h-[600px]">
-             {/* Left Large Image */}
-            <div className="relative w-full h-[400px] md:h-full bg-surface-container-high border border-border/10">
-              <Image src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" fill alt="Archive 01" className="object-cover" />
+            {/* Left Large Image */}
+            <div className="relative w-full h-[400px] md:h-full overflow-hidden border border-border/10">
+              <PlaceholderImage label={`Gallery 1`} className="w-full h-full" iconSize={48} />
             </div>
             {/* Right 2x2 Grid using Flex/Grid */}
             <div className="grid grid-rows-2 gap-4 h-[600px] md:h-full">
                <div className="grid grid-cols-2 gap-4 h-full">
-                 <div className="relative w-full h-full bg-surface-container-high border border-border/10">
-                   <Image src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?q=80&w=2070&auto=format&fit=crop" fill alt="Archive 02" className="object-cover" />
+                 <div className="relative w-full h-full overflow-hidden border border-border/10">
+                   <PlaceholderImage label={`Gallery 2`} className="w-full h-full" />
                  </div>
-                 <div className="relative w-full h-full bg-surface-container-highest flex items-center justify-center border border-border/10 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center">
-                   <div className="absolute inset-0 bg-background/80" />
-                   <div className="relative z-10 text-center">
-                     <div className="text-primary font-serif text-4xl mb-2">0-0</div>
-                     <p className="text-foreground/50 font-sans text-xs tracking-widest">構造詳細</p>
-                   </div>
+                 <div className="relative w-full h-full overflow-hidden border border-border/10">
+                   <PlaceholderImage label={`Gallery 3`} className="w-full h-full" />
                  </div>
                </div>
-               <div className="relative w-full h-full bg-surface-container-high border border-border/10">
-                 <Image src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop" fill alt="Archive 04" className="object-cover" />
+               <div className="relative w-full h-full overflow-hidden border border-border/10">
+                 <PlaceholderImage label={`Gallery 4`} className="w-full h-full" iconSize={48} />
                </div>
             </div>
           </div>
@@ -140,7 +136,7 @@ export default function WorkDetail({ params }: { params: { id: string } }) {
             {relatedWorks.map(rw => (
                <Link href={`/works/${rw.id}`} key={rw.id} className="group block">
                  <div className="relative aspect-square overflow-hidden mb-6 border border-border/10">
-                   <Image src={rw.img} alt={rw.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                   <PlaceholderImage label={rw.category} className="w-full h-full transition-transform duration-700 group-hover:scale-105" iconSize={36} />
                  </div>
                  <p className="text-primary font-sans text-[10px] tracking-widest mb-2 uppercase">{rw.category}</p>
                  <h3 className="text-xl font-serif text-foreground mb-4 uppercase group-hover:text-primary transition-colors">{rw.title}</h3>

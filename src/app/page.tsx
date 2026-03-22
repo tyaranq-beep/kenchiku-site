@@ -8,6 +8,7 @@ import StrengthsSection from "@/components/sections/strengths-section";
 import VoicesSection from "@/components/sections/testimonials-section"; 
 import Link from "next/link";
 import { StatCounter } from "@/components/StatCounter";
+import { PlaceholderImage } from "@/components/PlaceholderImage";
 
 const EASE_OUT = [0.76, 0, 0.24, 1] as const;
 
@@ -93,16 +94,16 @@ export default function Home() {
           className="absolute inset-0 w-full h-full will-change-transform"
           style={{ y: bgY }}
         >
-          {/* Unsplash Background */}
-          <div 
-            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center" 
-          />
+          {/* Placeholder Background */}
+          <div className="absolute inset-0">
+             <PlaceholderImage label="Hero Image" className="w-full h-full" iconSize={64} />
+          </div>
           <div className="absolute inset-0 bg-background/70 z-10" />
           <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background/90 via-background/40 to-transparent z-10" />
         </motion.div>
 
         <motion.div 
-          className="relative z-30 flex flex-col justify-center px-6 md:px-12 w-full max-w-7xl mx-auto h-full"
+          className="relative z-30 flex flex-col justify-end pb-[15vh] px-6 md:px-12 w-full max-w-7xl mx-auto h-full"
           style={{ y: textY, opacity }}
         >
           <motion.div 
@@ -115,12 +116,12 @@ export default function Home() {
               ESTABLISHED 1959 — TOKYO
             </motion.p>
             <div className="overflow-hidden py-2 px-1">
-              <motion.h1 variants={lineVariants} className="text-4xl md:text-6xl lg:text-7xl font-serif text-[#e8f0f8] tracking-tight leading-tight uppercase font-bold text-shadow-lg drop-shadow-md">
+              <motion.h1 variants={lineVariants} className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#e8f0f8] tracking-tight leading-tight uppercase font-bold text-shadow-lg drop-shadow-md">
                 時を超える建築を、
               </motion.h1>
             </div>
             <div className="overflow-hidden py-2 px-1">
-              <motion.h1 variants={lineVariants} className="flex items-center text-4xl md:text-6xl lg:text-7xl font-serif text-[#d4a843] italic tracking-tight leading-tight uppercase font-bold text-shadow-lg drop-shadow-md">
+              <motion.h1 variants={lineVariants} className="flex items-center text-4xl md:text-5xl lg:text-6xl font-serif text-[#d4a843] italic tracking-tight leading-tight uppercase font-bold text-shadow-lg drop-shadow-md">
                 この地に。
               </motion.h1>
             </div>
@@ -232,13 +233,15 @@ export default function Home() {
         </div>
       </section>
 
-      <ServicesSection />
+      <div className="bg-background relative z-20 w-full overflow-hidden">
+        <ServicesSection />
 
-      <StrengthsSection />
+        <StrengthsSection />
 
-      <VoicesSection />
+        <VoicesSection />
 
-      <WorksSection />
+        <WorksSection />
+      </div>
 
       <section className="sticky top-0 w-full min-h-[50vh] bg-background py-32 px-8 flex items-center justify-center z-50">
          <div className="text-center">

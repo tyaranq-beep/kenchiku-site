@@ -2,8 +2,45 @@
 
 import { motion } from "framer-motion";
 import { mockTeam } from "@/lib/mockData";
+import { Building2 } from "lucide-react";
 
 const EASE_OUT = [0.76, 0, 0.24, 1] as const;
+
+const history = [
+  {
+    year: "2012",
+    title: "設立",
+    desc: "九条誠一郎個人建築設計事務所として東京都渋谷区にて創業。建築設計事務所としてスタート。",
+    side: "left",
+  },
+  {
+    year: "2015",
+    title: "MONOLITH & SILK へ改組",
+    desc: "組織拡大に伴い法人化。「MONOLITH」と「SILK」をコアコンセプトとした株式会社に改組。",
+    side: "right",
+  },
+  {
+    year: "2018",
+    title: "ASIA ARCHITECTURE AWARD 受賞",
+    desc: 'プロジェクト「SILK PAVILION」がアジア建築賞においてゴールデンデザイン賞を受賞。',
+    side: "left",
+  },
+  {
+    year: "2024",
+    title: "サステナブル建築部門の創設",
+    desc: "環境配慮型建築の専門チームを設立し、カーボンニュートラル設計に本格注力。",
+    side: "right",
+  },
+];
+
+const qualifications = [
+  "一級建築士（22名）",
+  "構造設計一級建築士（3名）",
+  "設備設計一級建築士（3名）",
+  "宅地建物取引士（3名）",
+  "建設業許可 東京都知事許可（般-04）第XXXXX号",
+  "一級建築士事務所 東京都知事登録 第XXXXX号"
+];
 
 export default function CompanyPage() {
   return (
@@ -15,7 +52,7 @@ export default function CompanyPage() {
         
         <div className="relative z-20 text-center px-6">
           <motion.h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-serif text-primary tracking-widest mb-6"
+            className="text-4xl md:text-6xl lg:text-7xl font-serif text-[#d4a843] tracking-widest mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -43,21 +80,20 @@ export default function CompanyPage() {
           transition={{ duration: 0.8, ease: EASE_OUT }}
         >
           <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-            <div className="w-48 h-48 md:w-64 md:h-64 relative rounded-full overflow-hidden shrink-0 border border-primary/20 bg-surface-container-high flex items-center justify-center">
-              <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-40">
-                <circle cx="50" cy="35" r="18" stroke="#d4a843" strokeWidth="2"/>
-                <path d="M20 90 C20 68 80 68 80 90" stroke="#d4a843" strokeWidth="2" fill="none"/>
-              </svg>
+            <div className="shrink-0">
+              <div className="bg-[#1b2d40] p-5 rounded-lg flex items-center justify-center">
+                 <Building2 className="w-[80px] h-[80px] text-[#d4a843]" />
+              </div>
             </div>
             <div>
-              <h2 className="text-3xl font-serif text-primary mb-6">常に本質を問い続ける。</h2>
+              <h2 className="text-3xl font-serif text-[#d4a843] mb-6">常に本質を問い続ける。</h2>
               <p className="text-foreground/80 font-sans leading-loose tracking-wide mb-8">
                 建築とは、単なる構造物ではありません。それは人々の記憶を形作る器であり、時代を超えて残る「モニュメント」です。<br/><br/>
                 我々が創業以来大切にしてきたのは、妥協なき品質へのこだわりと、細部に宿る美意識です。重厚なMONOLITHの力強さと、絹のようなSILKの繊細さ。この相反する要素を高度な次元で融合させることこそが、私たちの使命であると信じています。
               </p>
               <div className="text-right">
                 <p className="font-serif text-2xl text-foreground">建築 太郎</p>
-                <p className="font-sans text-xs tracking-widest text-primary mt-1">代表取締役</p>
+                <p className="font-sans text-xs tracking-widest text-[#d4a843] mt-1">代表取締役</p>
               </div>
             </div>
           </div>
@@ -111,44 +147,61 @@ export default function CompanyPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: EASE_OUT }}
         >
-          <h2 className="text-2xl font-serif text-foreground tracking-widest border-b border-border/10 pb-6 mb-8">沿革</h2>
-          <div className="relative border-l border-primary/30 ml-3 md:ml-6 pl-8 md:pl-12 space-y-12">
+          <h2 className="text-2xl font-serif text-foreground tracking-widest border-b border-border/10 pb-6 mb-16">沿革</h2>
+          
+          <div className="relative w-full py-8 text-left">
+            {/* Central Line */}
+            <div className="absolute left-[16px] md:left-1/2 top-0 bottom-0 w-[1px] bg-[#d4a843] opacity-30 md:-translate-x-1/2" />
             
-            <div className="relative">
-              <div className="absolute -left-[41px] md:-left-[57px] top-1 w-4 h-4 rounded-full bg-background border-2 border-primary" />
-              <p className="text-primary font-serif text-xl mb-2">1998</p>
-              <h3 className="font-sans font-bold text-foreground mb-2">株式会社モノリス建築設計事務所として創業</h3>
-              <p className="text-foreground/70 font-sans text-sm leading-relaxed">東京都港区にて、商業施設の設計施工を主軸として事業を開始。</p>
+            <div className="space-y-16">
+              {history.map((item, idx) => (
+                <motion.div 
+                   key={idx}
+                   initial={{ opacity: 0, y: 30 }}
+                   whileInView={{ opacity: 1, y: 0 }}
+                   viewport={{ once: true, margin: "-100px" }}
+                   transition={{ duration: 0.6, delay: 0.15 }}
+                   className={`relative flex flex-col md:flex-row items-start md:items-center justify-between ${item.side === "left" ? "md:flex-row-reverse" : ""}`}
+                >
+                  <div className="hidden md:block w-5/12" /> {/* Spacer */}
+                  
+                  {/* Gold Dot */}
+                  <div className="absolute left-[16px] md:left-1/2 w-3 h-3 bg-[#d4a843] rounded-full transform -translate-x-1/2 mt-3 md:mt-0 z-10" />
+                  
+                  {/* Content */}
+                  <div className="w-full md:w-5/12 pl-12 md:pl-0 flex flex-col pt-1 md:pt-0">
+                    <p className={`text-[28px] text-[#d4a843] font-medium font-serif leading-none mb-3 ${item.side === "left" ? "md:text-right" : "md:text-left"}`}>
+                      {item.year}
+                    </p>
+                    <h3 className={`text-lg font-bold font-sans text-foreground mb-3 ${item.side === "left" ? "md:text-right" : "md:text-left"}`}>
+                      {item.title}
+                    </h3>
+                    <p className={`text-foreground/70 font-sans text-sm leading-relaxed ${item.side === "left" ? "md:text-right" : "md:text-left"}`}>
+                      {item.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-            
-            <div className="relative">
-              <div className="absolute -left-[41px] md:-left-[57px] top-1 w-4 h-4 rounded-full bg-background border-2 border-primary" />
-              <p className="text-primary font-serif text-xl mb-2">2005</p>
-              <h3 className="font-sans font-bold text-foreground mb-2">都市開発事業部を設立</h3>
-              <p className="text-foreground/70 font-sans text-sm leading-relaxed">大規模な複合施設のコンペティションにて最優秀賞を受賞。これを機に都市開発領域へ進出。</p>
-            </div>
+          </div>
+        </motion.section>
 
-            <div className="relative">
-              <div className="absolute -left-[41px] md:-left-[57px] top-1 w-4 h-4 rounded-full bg-background border-2 border-primary" />
-              <p className="text-primary font-serif text-xl mb-2">2012</p>
-              <h3 className="font-sans font-bold text-foreground mb-2">社名を MONOLITH & SILK に変更</h3>
-              <p className="text-foreground/70 font-sans text-sm leading-relaxed">内装デザイン・素材調達部門である「SILK」部門を統合。構造からディテールまでの一貫した美学を確立。</p>
-            </div>
-
-            <div className="relative">
-              <div className="absolute -left-[41px] md:-left-[57px] top-1 w-4 h-4 rounded-full bg-background border-2 border-primary" />
-              <p className="text-primary font-serif text-xl mb-2">2020</p>
-              <h3 className="font-sans font-bold text-foreground mb-2">サステナビリティ推進室を開設</h3>
-              <p className="text-foreground/70 font-sans text-sm leading-relaxed">カーボンニュートラルな建築手法の研究開発を開始。国内外から高い評価を得る。</p>
-            </div>
-
-            <div className="relative">
-              <div className="absolute -left-[41px] md:-left-[57px] top-1 w-4 h-4 rounded-full bg-primary" />
-              <p className="text-primary font-serif text-xl mb-2">2024</p>
-              <h3 className="font-sans font-bold text-foreground mb-2">モニュメントタワーへ本社移転</h3>
-              <p className="text-foreground/70 font-sans text-sm leading-relaxed">事業拡大に伴い、フラッグシップ拠点として現在の最新鋭オフィスへ移転。</p>
-            </div>
-
+        {/* QUALIFICATIONS */}
+        <motion.section 
+          className="mb-32"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: EASE_OUT }}
+        >
+          <h2 className="text-2xl font-serif text-foreground tracking-widest border-b border-border/10 pb-6 mb-8">保有資格・許可証</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+            {qualifications.map((q, i) => (
+              <div key={i} className="flex items-center gap-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#d4a843] block shrink-0" />
+                <p className="text-foreground/80 font-sans text-sm tracking-wide">{q}</p>
+              </div>
+            ))}
           </div>
         </motion.section>
 
@@ -179,46 +232,12 @@ export default function CompanyPage() {
                     onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                   />
                 </div>
-                <h3 className="text-lg font-bold font-sans text-foreground mb-1 group-hover:text-primary transition-colors">{member.name}</h3>
-                <p className="text-primary font-sans text-[10px] tracking-widest uppercase">{member.role}</p>
+                <h3 className="text-lg font-bold font-sans text-foreground mb-1 group-hover:text-[#d4a843] transition-colors">{member.name}</h3>
+                <p className="text-[#d4a843] font-sans text-[10px] tracking-widest uppercase">{member.role}</p>
               </motion.div>
             ))}
           </div>
         </motion.section>
-
-        {/* QUALIFICATIONS */}
-        <motion.section 
-          className="mb-32"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: EASE_OUT }}
-        >
-          <h2 className="text-2xl font-serif text-foreground tracking-widest border-b border-border/10 pb-6 mb-8">保有資格</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
-            <div className="flex items-center gap-4 border-b border-border/5 pb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary block shrink-0" />
-              <p className="text-foreground/80 font-sans text-sm tracking-wide">一級建築士事務所 東京都知事登録 第00000号</p>
-            </div>
-            <div className="flex items-center gap-4 border-b border-border/5 pb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary block shrink-0" />
-              <p className="text-foreground/80 font-sans text-sm tracking-wide">特定建設業許可 国土交通大臣 (特-00) 第00000号</p>
-            </div>
-            <div className="flex items-center gap-4 border-b border-border/5 pb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary block shrink-0" />
-              <p className="text-foreground/80 font-sans text-sm tracking-wide">品質マネジメントシステム ISO 9001 認証取得</p>
-            </div>
-            <div className="flex items-center gap-4 border-b border-border/5 pb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary block shrink-0" />
-              <p className="text-foreground/80 font-sans text-sm tracking-wide">環境マネジメントシステム ISO 14001 認証取得</p>
-            </div>
-            <div className="flex items-center gap-4 border-b border-border/5 pb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary block shrink-0" />
-              <p className="text-foreground/80 font-sans text-sm tracking-wide">宅地建物取引業者 免許証番号 東京都知事(0)第00000号</p>
-            </div>
-          </div>
-        </motion.section>
-
       </div>
     </div>
   );
