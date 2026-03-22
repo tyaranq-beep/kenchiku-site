@@ -81,19 +81,11 @@ export default function GeometricBackground() {
           <motion.g
             style={{ transformOrigin: `${CX}px ${CY}px` }}
             initial={{ opacity: 0 }}
-            animate={
-              prefersReduced
-                ? { opacity: 1 }
-                : { opacity: 1, rotate: 360 }
-            }
-            transition={
-              prefersReduced
-                ? { duration: 1.5 }
-                : {
-                    opacity: { duration: 1.5 },
-                    rotate: { duration: 80, repeat: Infinity, ease: "linear" },
-                  }
-            }
+            animate={{ opacity: 1, rotate: 360 }}
+            transition={{
+              opacity: { duration: 1.5 },
+              rotate: { duration: 80, repeat: Infinity, ease: "linear" },
+            }}
           >
             <polygon
               points={hexPoints(CX, CY, 140)}
@@ -108,19 +100,11 @@ export default function GeometricBackground() {
           <motion.g
             style={{ transformOrigin: `${CX}px ${CY}px` }}
             initial={{ opacity: 0 }}
-            animate={
-              prefersReduced
-                ? { opacity: 1 }
-                : { opacity: 1, rotate: -360 }
-            }
-            transition={
-              prefersReduced
-                ? { duration: 1.5 }
-                : {
-                    opacity: { duration: 1.5, delay: 0.3 },
-                    rotate: { duration: 60, repeat: Infinity, ease: "linear" },
-                  }
-            }
+            animate={{ opacity: 1, rotate: -360 }}
+            transition={{
+              opacity: { duration: 1.5, delay: 0.3 },
+              rotate: { duration: 60, repeat: Infinity, ease: "linear" },
+            }}
           >
             <polygon
               points={hexPoints(CX, CY, 80)}
@@ -187,16 +171,8 @@ export default function GeometricBackground() {
             stroke="#d4a843"
             strokeWidth="0.4"
             initial={{ opacity: 0 }}
-            animate={
-              prefersReduced
-                ? { opacity: 0.08 }
-                : { opacity: [0, 0.08, 0.04, 0.08] }
-            }
-            transition={
-              prefersReduced
-                ? { duration: 1.2, delay: 1.5 }
-                : { duration: 6, repeat: Infinity, delay: 1.5 }
-            }
+            animate={{ opacity: [0, 0.08, 0.04, 0.08] }}
+            transition={{ duration: 6, repeat: Infinity, delay: 1.5 }}
           />
 
           {/* ---- 装飾 小六角形（左下・点滅） ---- */}
@@ -206,16 +182,8 @@ export default function GeometricBackground() {
             stroke="#d4a843"
             strokeWidth="0.4"
             initial={{ opacity: 0 }}
-            animate={
-              prefersReduced
-                ? { opacity: 0.07 }
-                : { opacity: [0, 0.07, 0.03, 0.07] }
-            }
-            transition={
-              prefersReduced
-                ? { duration: 1.2, delay: 1.8 }
-                : { duration: 8, repeat: Infinity, delay: 1.8 }
-            }
+            animate={{ opacity: [0, 0.07, 0.03, 0.07] }}
+            transition={{ duration: 8, repeat: Infinity, delay: 1.8 }}
           />
 
           {/* ---- グリッドライン（静的・アニメーションなし） ---- */}

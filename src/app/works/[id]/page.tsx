@@ -88,20 +88,20 @@ export default function WorkDetail({ params }: { params: { id: string } }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-auto md:h-[600px]">
             {/* Left Large Image */}
             <div className="relative w-full h-[400px] md:h-full overflow-hidden border border-border/10">
-              <PlaceholderImage label={`Gallery 1`} className="w-full h-full" iconSize={48} />
+              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop" alt="Gallery 1" className="w-full h-full object-cover" />
             </div>
             {/* Right 2x2 Grid using Flex/Grid */}
             <div className="grid grid-rows-2 gap-4 h-[600px] md:h-full">
                <div className="grid grid-cols-2 gap-4 h-full">
                  <div className="relative w-full h-full overflow-hidden border border-border/10">
-                   <PlaceholderImage label={`Gallery 2`} className="w-full h-full" />
+                   <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop" alt="Gallery 2" className="w-full h-full object-cover" />
                  </div>
                  <div className="relative w-full h-full overflow-hidden border border-border/10">
-                   <PlaceholderImage label={`Gallery 3`} className="w-full h-full" />
+                   <img src="https://images.unsplash.com/photo-1600566753086-00f18efc2291?q=80&w=2000&auto=format&fit=crop" alt="Gallery 3" className="w-full h-full object-cover" />
                  </div>
                </div>
                <div className="relative w-full h-full overflow-hidden border border-border/10">
-                 <PlaceholderImage label={`Gallery 4`} className="w-full h-full" iconSize={48} />
+                 <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop" alt="Archive 04 / Gallery 4" className="w-full h-full object-cover" />
                </div>
             </div>
           </div>

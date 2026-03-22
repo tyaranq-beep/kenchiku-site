@@ -88,7 +88,7 @@ export default function Home() {
       {/* Hero Section */}
       <section 
         ref={heroRef} 
-        className="sticky top-0 w-full h-screen flex flex-col justify-center overflow-hidden z-10 bg-background rounded-b-3xl shadow-2xl"
+        className="relative w-full h-screen flex flex-col justify-center overflow-hidden z-10 bg-background rounded-b-3xl shadow-2xl"
       >
         <motion.div 
           className="absolute inset-0 w-full h-full will-change-transform"
@@ -107,7 +107,7 @@ export default function Home() {
           style={{ y: textY, opacity }}
         >
           <motion.div 
-            className="mb-8 flex flex-col gap-2 mt-20 md:mt-32"
+            className="mb-8 flex flex-col gap-2 mt-32 md:mt-48"
             initial="hidden"
             animate="visible"
             transition={{ staggerChildren: 0.2, delayChildren: 2.3 }}
@@ -243,7 +243,7 @@ export default function Home() {
         <WorksSection />
       </div>
 
-      <section className="sticky top-0 w-full min-h-[50vh] bg-background py-32 px-8 flex items-center justify-center z-50">
+      <section className="relative w-full min-h-[50vh] bg-background py-32 px-8 flex items-center justify-center z-50">
          <div className="text-center">
             <h2 className="text-4xl md:text-6xl font-serif mb-6 text-primary">お問い合わせ</h2>
             <p className="text-foreground/70 font-sans tracking-widest mb-12">最高峰の建築ソリューションを、あなたに。</p>
