@@ -1,110 +1,96 @@
-import { motion } from "framer-motion";
-import { useRef } from "react";
-import { Quote } from "lucide-react";
+"use client";
+
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const voices = [
   {
     id: 1,
-    text: "商業空間の概念を根底から覆す、まさに建築の詩とも呼べる圧倒的な空間体験でした。",
-    name: "佐藤 健二",
-    title: "NEXUS HOLDINGS 代表取締役"
+    text: "MONOLITH & SILKのチームは、商業空間の可能性を根本から再定義してくれました。純粋な建築の詩です。",
+    name: "佐藤 賢司",
+    title: "代表取締役CEO、ネクサスホールディングス株式会社"
   },
   {
     id: 2,
-    text: "力強さの中に潜む『シルク』のような繊細なディテールが、私たちの邸宅を光と優雅さに包まれたサンクチュアリへと昇華させてくれました。",
-    name: "エレナ・ロッシ",
-    title: "個人邸オーナー"
+    text: "細部への徹底したこだわりが、単なる住まいを光と空間の sanctuary に変えてくれました。",
+    name: "山田 美智子",
+    title: "プライベートクライアント"
   },
   {
     id: 3,
-    text: "あらゆるフェーズにおける圧倒的な精度。工期を前倒しで完了しながらも、類を見ない堅牢な構造美を実現していただきました。",
-    name: "田中 浩司",
-    title: "TOKYO MEDICAL HUB 理事長"
+    text: "あらゆる面で精密な仕事ぶりでした。工期より早く完成し、構造の完成度も期待を超えていました。",
+    name: "田中 博",
+    title: "院長、東京メディカルハブ"
   }
 ];
 
 export default function VoicesSection() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  // A simple way to handle dot clicks if desired, but native css snap scroll handles the interaction
-  const scrollTo = (index: number) => {
-    if (scrollRef.current) {
-      const card = scrollRef.current.children[index] as HTMLElement;
-      scrollRef.current.scrollTo({
-        left: card.offsetLeft,
-        behavior: 'smooth'
-      });
-    }
-  };
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % voices.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section className="w-full py-32 bg-surface-container-low relative z-20 overflow-hidden grid-pattern">
-      <div className="max-w-7xl mx-auto w-full px-6 md:px-12 mb-16">
+      <div className="max-w-4xl mx-auto w-full px-6 flex flex-col items-center">
+        <motion.p 
+          className="text-[#d4a843] font-sans font-bold tracking-[0.2em] text-sm uppercase mb-4"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+        >
+          CLIENT VOICES
+        </motion.p>
         <motion.h2 
-          className="text-4xl md:text-6xl lg:text-7xl font-serif text-primary tracking-widest mb-6"
+          className="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground mb-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
           お客様の声
         </motion.h2>
-        <motion.p 
-          className="text-foreground/80 font-sans tracking-[0.2em] text-xs md:text-sm uppercase"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-        >
-          VOICES
-        </motion.p>
-      </div>
 
-      <div className="relative w-full overflow-hidden px-6 md:px-12 max-w-[1400px] mx-auto">
-        <div 
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {voices.map((voice, idx) => (
+        <div className="relative w-full min-h-[300px] flex items-center justify-center">
+          <AnimatePresence mode="wait">
             <motion.div
-              key={voice.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="snap-center shrink-0 w-[85vw] md:w-[400px] bg-background/50 border border-primary/20 p-8 md:p-12 relative flex flex-col justify-between"
+              key={currentIndex}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className="absolute inset-0 flex flex-col items-center text-center justify-center p-8 bg-background/50 border border-[#d4a843]/20 shadow-lg"
             >
-              <div>
-                <Quote className="w-8 h-8 text-primary mb-6" />
-                <p className="text-foreground/80 font-serif italic text-lg leading-relaxed mb-8">
-                  &quot;{voice.text}&quot;
-                </p>
-              </div>
-              <div className="pl-4 border-l-2 border-primary">
-                <p className="font-sans font-bold text-foreground text-sm tracking-wider">{voice.name}</p>
-                <p className="font-sans text-xs text-primary/70 tracking-widest uppercase mt-1">{voice.title}</p>
+              <span className="text-6xl font-serif text-[#d4a843] leading-none mb-4 absolute top-4 left-6 opacity-30">&quot;</span>
+              <p className="text-foreground/80 font-serif text-lg md:text-xl leading-relaxed mb-8 max-w-2xl px-4 z-10 relative">
+                {voices[currentIndex].text}
+              </p>
+              <div className="flex flex-col items-center mt-auto">
+                <div className="w-8 h-[1px] bg-[#d4a843] mb-4"></div>
+                <p className="font-sans font-bold text-foreground text-base tracking-wider">{voices[currentIndex].name}</p>
+                <p className="font-sans text-xs text-[#d4a843] tracking-widest mt-2">{voices[currentIndex].title}</p>
               </div>
             </motion.div>
-          ))}
+          </AnimatePresence>
         </div>
 
-        {/* CSS for hiding scrollbar in webkit */}
-        <style dangerouslySetInnerHTML={{__html: `
-          .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-          }
-        `}} />
-      </div>
-
-      <div className="flex justify-center gap-3 mt-8">
-        {voices.map((_, idx) => (
-          <button 
-            key={idx}
-            onClick={() => scrollTo(idx)}
-            className="w-2 h-2 rounded-full bg-border transition-colors hover:bg-primary"
-            aria-label={`Go to slide ${idx + 1}`}
-          />
-        ))}
+        {/* Pagination Dots */}
+        <div className="flex gap-4 mt-8 z-10">
+          {voices.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentIndex(idx)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                idx === currentIndex ? "bg-[#d4a843] w-6" : "bg-white/20 hover:bg-white/40"
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

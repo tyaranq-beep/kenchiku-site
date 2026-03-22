@@ -1,48 +1,49 @@
 import { motion } from "framer-motion";
-import { PenTool, Box, Navigation, Ruler, Hammer, Building2 } from "lucide-react";
+import { Building2, Home, Grid3x3, Wind, Trees, Hammer, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const services = [
   {
     num: "01",
-    title: "建築設計・都市計画",
-    enTitle: "Architectural Design",
-    desc: "時を超える美しさと機能性を兼ね備えた建築の設計",
-    icon: <PenTool className="w-5 h-5" />
+    enTitle: "CONTRACTING",
+    title: "工務店・建築工事",
+    desc: "新築・増改築・リフォームまで幅広く対応します。",
+    icon: <Building2 className="w-8 h-8 text-[#d4a843]" />
   },
   {
     num: "02",
-    title: "インテリアデザイン",
-    enTitle: "Interior Refinement",
-    desc: "素材の質感を最大限に引き出すハイエンドな内装設計",
-    icon: <Box className="w-5 h-5" />
+    enTitle: "EXTERIOR",
+    title: "外壁・屋根工事",
+    desc: "外壁塗装・防水・屋根修繕・板金工事。",
+    icon: <Home className="w-8 h-8 text-[#d4a843]" />
   },
   {
     num: "03",
-    title: "都市開発・まちづくり",
-    enTitle: "Urban Planning",
-    desc: "地域社会と調和する次世代のランドスケープデザイン",
-    icon: <Navigation className="w-5 h-5" />
+    enTitle: "SCAFFOLDING",
+    title: "足場・鉄骨工事",
+    desc: "仮設足場・鉄骨建方・溶接・鍛冶工事。",
+    icon: <Grid3x3 className="w-8 h-8 text-[#d4a843]" />
   },
   {
     num: "04",
-    title: "土木・基礎工事",
-    enTitle: "Civil Engineering",
-    desc: "一切の妥協を排した、100年後の安全を担保する基盤構築",
-    icon: <Ruler className="w-5 h-5" />
+    enTitle: "AIR CONDITIONING",
+    title: "空調・衛生設備",
+    desc: "冷暖房・換気・給排水・ガス配管工事。",
+    icon: <Wind className="w-8 h-8 text-[#d4a843]" />
   },
   {
     num: "05",
-    title: "歴史的建造物の修復",
-    enTitle: "Historical Restoration",
-    desc: "伝統的な工法と最新技術の融合による文化財の保存再生",
-    icon: <Hammer className="w-5 h-5" />
+    enTitle: "LANDSCAPING",
+    title: "外構・造園工事",
+    desc: "エクステリア・庭園設計・舗装・植栽。",
+    icon: <Trees className="w-8 h-8 text-[#d4a843]" />
   },
   {
     num: "06",
-    title: "建築投資コンサルティング",
-    enTitle: "Consultation",
-    desc: "事業性を考慮した最適な不動産開発・活用プランのご提案",
-    icon: <Building2 className="w-5 h-5" />
+    enTitle: "DEMOLITION",
+    title: "解体・土木工事",
+    desc: "建物解体・地盤改良・土工・舗装工事。",
+    icon: <Hammer className="w-8 h-8 text-[#d4a843]" />
   }
 ];
 
@@ -50,36 +51,23 @@ export default function ServicesSection() {
   return (
     <section className="w-full py-32 px-6 md:px-12 relative z-20 border-t border-border/10 grid-pattern">
       <div className="max-w-7xl mx-auto w-full">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
-          <div>
-            <motion.h2 
-              className="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground mb-4"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              事業内容
-            </motion.h2>
-            <motion.p 
-              className="text-primary font-sans font-bold tracking-widest text-sm uppercase"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              OUR EXPERTISE
-            </motion.p>
-          </div>
-          
+        <div className="flex flex-col mb-16">
           <motion.p 
-            className="md:max-w-md text-foreground/60 font-serif italic text-lg leading-relaxed border-l-2 border-primary/20 pl-6"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="text-[#d4a843] font-sans text-[11px] tracking-widest lowercase mb-2"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
           >
-            &quot;Architecture is the learned game, correct and magnificent, of forms assembled in the light.&quot;
+            our services
           </motion.p>
+          <motion.h2 
+            className="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground mb-4"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            事業内容
+          </motion.h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -90,16 +78,25 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="bg-surface-container-high p-10 flex flex-col justify-between group hover:bg-surface-container-highest transition-colors duration-500 border border-border/5"
+              whileHover={{ y: -6, borderColor: "#d4a843" }}
+              className="bg-surface-container-high p-10 flex flex-col justify-between transition-colors duration-300 border border-border/10 cursor-pointer h-full"
             >
               <div>
-                <span className="text-foreground/30 font-serif text-2xl mb-8 block font-light">{service.num}</span>
-                <h3 className="text-xl font-body font-bold text-foreground mb-2 group-hover:text-primary transition-colors">{service.title}</h3>
-                <h4 className="text-xs font-sans text-foreground/40 uppercase tracking-widest mb-6">{service.enTitle}</h4>
-                <p className="text-sm text-foreground/60 leading-relaxed font-sans">{service.desc}</p>
+                <div className="flex justify-between items-start mb-8">
+                  <span className="text-foreground/30 font-serif text-2xl font-light">{service.num}</span>
+                  <div className="p-3 bg-[#1b2d40] rounded-lg">
+                    {service.icon}
+                  </div>
+                </div>
+                <h4 className="text-xl font-bold font-sans text-foreground mb-1 tracking-wider">{service.enTitle}</h4>
+                <h3 className="text-sm font-sans text-foreground/70 mb-6">{service.title}</h3>
+                <p className="text-sm text-foreground/60 leading-relaxed font-sans min-h-[40px]">{service.desc}</p>
               </div>
-              <div className="mt-12 text-primary">
-                {service.icon}
+              <div className="mt-8 flex items-center text-[#d4a843] font-sans text-xs font-bold tracking-widest group">
+                <Link href="/services" className="flex items-center hover:opacity-80 transition-opacity">
+                  詳しく見る
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
               </div>
             </motion.div>
           ))}

@@ -7,6 +7,7 @@ import WorksSection from "@/components/sections/works-section";
 import StrengthsSection from "@/components/sections/strengths-section";
 import VoicesSection from "@/components/sections/testimonials-section"; 
 import Link from "next/link";
+import { StatCounter } from "@/components/StatCounter";
 
 const EASE_OUT = [0.76, 0, 0.24, 1] as const;
 
@@ -110,13 +111,16 @@ export default function Home() {
             animate="visible"
             transition={{ staggerChildren: 0.2, delayChildren: 2.3 }}
           >
+            <motion.p variants={lineVariants} className="font-sans text-[11px] tracking-[0.15em] text-[#d4a843] mb-2 uppercase">
+              ESTABLISHED 1959 — TOKYO
+            </motion.p>
             <div className="overflow-hidden py-2 px-1">
-              <motion.h1 variants={lineVariants} className="text-4xl md:text-6xl lg:text-7xl font-serif text-white tracking-tight leading-tight uppercase font-bold text-shadow-lg drop-shadow-md">
+              <motion.h1 variants={lineVariants} className="text-4xl md:text-6xl lg:text-7xl font-serif text-[#e8f0f8] tracking-tight leading-tight uppercase font-bold text-shadow-lg drop-shadow-md">
                 時を超える建築を、
               </motion.h1>
             </div>
             <div className="overflow-hidden py-2 px-1">
-              <motion.h1 variants={lineVariants} className="flex items-center text-4xl md:text-6xl lg:text-7xl font-serif text-primary tracking-tight leading-tight uppercase font-bold text-shadow-lg drop-shadow-md">
+              <motion.h1 variants={lineVariants} className="flex items-center text-4xl md:text-6xl lg:text-7xl font-serif text-[#d4a843] italic tracking-tight leading-tight uppercase font-bold text-shadow-lg drop-shadow-md">
                 この地に。
               </motion.h1>
             </div>
@@ -128,7 +132,7 @@ export default function Home() {
             animate="visible"
             transition={{ delayChildren: 2.8 }} 
           >
-            <motion.p variants={lineVariants} className="text-white/80 font-sans tracking-widest text-sm md:text-base leading-relaxed border-l-2 border-primary pl-4 py-1">
+            <motion.p variants={lineVariants} className="text-[#8faabb] font-sans tracking-widest text-sm leading-[1.8] border-l-2 border-[#d4a843] pl-4 py-1">
               圧倒的な強度と、絹のような繊細さ。<br />
               時代を超えて価値を高め続ける空間の創造。
             </motion.p>
@@ -146,7 +150,7 @@ export default function Home() {
           </div>
 
           <div className="absolute bottom-12 right-6 md:right-12 z-30">
-             <Link href="/contact" className="hidden md:flex items-center px-8 py-4 bg-primary text-primary-foreground font-sans tracking-widest text-sm font-bold hover:bg-white hover:text-background transition-colors shadow-lg">
+             <Link href="/contact" className="hidden md:flex items-center px-8 py-4 bg-[#d4a843] text-[#061423] font-sans tracking-widest text-sm font-bold hover:bg-white hover:text-[#061423] transition-colors shadow-lg">
                無料相談はこちら
              </Link>
           </div>
@@ -164,7 +168,6 @@ export default function Home() {
             variants={skewVariants}
           >
             <div className="w-full h-full bg-surface-container-highest/80 border-[1px] border-primary/20 flex items-center justify-center">
-              <span className="text-foreground/30 font-sans tracking-widest text-xs">建築イメージ</span>
             </div>
             {/* <Image src="/placeholder-arch.jpg" fill alt="Architecture" className="object-cover" /> */}
           </motion.div>
@@ -220,13 +223,22 @@ export default function Home() {
         </div>
       </section>
 
-      <ServicesSection />
+      {/* Stats Section */}
+      <section className="w-full py-20 bg-background relative z-20 border-b border-white/5">
+        <div className="max-w-6xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-white/10">
+          <StatCounter target={2400} suffix="+" label="施工実績件数" />
+          <StatCounter target={99}   suffix="%" label="顧客満足度" duration={1.5} />
+          <StatCounter target={65}   suffix="年" label="創業からの歴史" duration={2.0} />
+        </div>
+      </section>
 
-      <WorksSection />
+      <ServicesSection />
 
       <StrengthsSection />
 
       <VoicesSection />
+
+      <WorksSection />
 
       <section className="sticky top-0 w-full min-h-[50vh] bg-background py-32 px-8 flex items-center justify-center z-50">
          <div className="text-center">

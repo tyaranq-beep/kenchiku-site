@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import FAQSection from "@/components/sections/faq-section";
-import { Building2, Home, Building, Shield, Hammer, TreePine } from "lucide-react";
+import { Building2, Home, Landmark, PaintBucket, Grid3x3, Trees } from "lucide-react";
 
 const EASE_OUT = [0.76, 0, 0.24, 1] as const;
 
@@ -11,37 +11,43 @@ const services = [
     id: "01",
     title: "商業施設開発",
     enTitle: "COMMERCIAL",
-    description: "ランドマークとなる複合商業施設や、ブランドの思想を体現する旗艦店などの設計・施工を行います。集客力とデザイン性を両立し、都市の新しい価値を創出します。"
+    description: "ランドマークとなる複合商業施設や、ブランドの思想を体現する旗艦店などの設計・施工を行います。集客力とデザイン性を両立し、都市の新しい価値を創出します。",
+    icon: Building2
   },
   {
     id: "02",
     title: "ハイエンド住宅・リノベーション",
     enTitle: "RESIDENTIAL",
-    description: "一切の妥協を排した邸宅建築。お客様のライフスタイルに合わせた唯一無二の空間を、選りすぐりの素材と卓越した職人技で形にします。"
+    description: "一切の妥協を排した邸宅建築。お客様のライフスタイルに合わせた唯一無二の空間を、選りすぐりの素材と卓越した職人技で形にします。",
+    icon: Home
   },
   {
     id: "03",
     title: "公共施設・オフィスビル",
     enTitle: "PUBLIC & OFFICE",
-    description: "安全性、機能性、環境配慮を高い次元で満たす先進的なインフラ構築。次世代の働き方やコミュニティのあり方をデザインします。"
+    description: "安全性、機能性、環境配慮を高い次元で満たす先進的なインフラ構築。次世代の働き方やコミュニティのあり方をデザインします。",
+    icon: Landmark
   },
   {
     id: "04",
     title: "外壁・屋根工事",
-    enTitle: "EXTERIOR",
-    description: "美観と耐久性を兼ね備えた外装リニューアル。最先端の素材と確かな施工技術で、建物の寿命を延ばし、資産価値を最大化します。"
+    enTitle: "EXTERIOR WORK",
+    description: "外壁塗装・防水処理・屋根葺き替え・板金工事など、建物の外装に関わる全ての工事に対応します。\n対応業務: 外壁塗装 / シーリング工事 / 屋根修繕 / 防水工事",
+    icon: PaintBucket
   },
   {
     id: "05",
-    title: "足場・鉄骨工事",
-    enTitle: "SCAFFOLDING & STEEL",
-    description: "全ての建築の骨格となる躯体工事と、安全な作業環境を支える仮設足場工事。徹底した安全管理のもと、大規模プロジェクトの基盤を構築します。"
+    title: "足場・仮設工事",
+    enTitle: "SCAFFOLDING",
+    description: "大型建造物から一般住宅まで、安全で効率的な仮設足場の設計・施工を行います。\n対応業務: 枠組足場 / 単管足場 / クサビ足場 / 解体足場",
+    icon: Grid3x3
   },
   {
     id: "06",
-    title: "造園・外構工事",
+    title: "外構・造園工事",
     enTitle: "LANDSCAPING",
-    description: "建築物と周辺環境を調和させるランドスケープデザイン。都市に自然の潤いをもたらし、訪れる人々に安らぎを与える空間を創造します。"
+    description: "建物を引き立てる外構・エクステリアの設計から施工まで。自然と建築が調和する空間を創出します。\n対応業務: 庭園設計 / 植栽工事 / 舗装工事 / フェンス設置",
+    icon: Trees
   }
 ];
 
@@ -55,40 +61,40 @@ export default function ServicesPage() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: EASE_OUT }}
         >
-          <p className="text-primary font-sans text-sm tracking-[0.2em] mb-4">OUR SERVICES</p>
+          <p className="text-[#d4a843] font-sans text-sm tracking-[0.2em] mb-4 uppercase">OUR SERVICES</p>
           <h1 className="text-5xl md:text-7xl font-serif text-foreground">事業内容</h1>
         </motion.div>
 
         <div className="grid grid-cols-1 gap-24">
-          {services.map((service, index) => (
-            <motion.div 
-              key={service.id}
-              className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: index * 0.1, ease: EASE_OUT }}
-            >
-              <div className="col-span-1 md:col-span-5 relative aspect-[4/3] bg-surface-container-high border-[1px] border-border/20 flex items-center justify-center group overflow-hidden">
-                 {service.id === "01" && <Building2 className="w-16 h-16 text-primary/40 group-hover:text-primary transition-colors" />}
-                 {service.id === "02" && <Home className="w-16 h-16 text-primary/40 group-hover:text-primary transition-colors" />}
-                 {service.id === "03" && <Building className="w-16 h-16 text-primary/40 group-hover:text-primary transition-colors" />}
-                 {service.id === "04" && <Shield className="w-16 h-16 text-primary/40 group-hover:text-primary transition-colors" />}
-                 {service.id === "05" && <Hammer className="w-16 h-16 text-primary/40 group-hover:text-primary transition-colors" />}
-                 {service.id === "06" && <TreePine className="w-16 h-16 text-primary/40 group-hover:text-primary transition-colors" />}
-              </div>
-              <div className="col-span-1 md:col-span-7 md:pl-16">
-                <div className="flex items-end gap-4 mb-6">
-                  <span className="text-primary font-serif text-4xl leading-none">{service.id}.</span>
-                  <h2 className="text-2xl md:text-3xl font-body font-bold text-foreground">{service.title}</h2>
+          {services.map((service, index) => {
+            const IconComponent = service.icon;
+            return (
+              <motion.div 
+                key={service.id}
+                className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, delay: index * 0.1, ease: EASE_OUT }}
+              >
+                <div className="col-span-1 md:col-span-5 flex items-center justify-center md:justify-start">
+                  <div className="bg-[#1b2d40] p-12 rounded-lg flex items-center justify-center shadow-lg">
+                     <IconComponent className="w-10 h-10 text-[#d4a843]" />
+                  </div>
                 </div>
-                <p className="text-foreground/40 font-sans tracking-widest text-xs mb-6 uppercase">{service.enTitle}</p>
-                <p className="text-foreground/70 font-sans leading-loose tracking-wide">
-                  {service.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+                <div className="col-span-1 md:col-span-7 md:pl-8">
+                  <div className="flex items-end gap-4 mb-6">
+                    <span className="text-[#d4a843] font-serif text-4xl leading-none">{service.id}.</span>
+                    <h2 className="text-2xl md:text-3xl font-body font-bold text-foreground">{service.title}</h2>
+                  </div>
+                  <p className="text-foreground/40 font-sans tracking-widest text-xs mb-6 uppercase">{service.enTitle}</p>
+                  <p className="text-foreground/70 font-sans leading-loose tracking-wide whitespace-pre-line">
+                    {service.description}
+                  </p>
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
       <div className="mt-32">

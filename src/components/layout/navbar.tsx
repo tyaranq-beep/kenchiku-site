@@ -7,11 +7,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/", label: "プロジェクト" },
-  { href: "/services", label: "サービス" },
-  { href: "/works", label: "ギャラリー" },
-  { href: "/company", label: "企業情報" },
-  { href: "/contact", label: "お問い合わせ" },
+  { href: "/works", label: "PROJECTS", matchPattern: "/works" },
+  { href: "/services", label: "SERVICES", matchPattern: "/services" },
+  { href: "/works", label: "ARCHIVE", matchPattern: "/works" },
+  { href: "/company", label: "CULTURE", matchPattern: "/company" },
+  { href: "/contact", label: "CONTACT", matchPattern: "/contact" },
 ];
 
 export default function Navbar() {
@@ -49,17 +49,17 @@ export default function Navbar() {
         </Link>
         
         <nav className="hidden md:flex gap-8 text-xs font-sans tracking-widest items-center">
-          {links.map((link) => {
-            const isActive = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+          {links.map((link, index) => {
+            const isActive = pathname.startsWith(link.matchPattern);
             return (
-              <Link key={link.href} href={link.href} className="relative hover:text-primary transition-colors min-h-[44px] flex items-center py-3 group">
+              <Link key={`${link.href}-${index}`} href={link.href} className="relative hover:text-[#d4a843] transition-colors min-h-[44px] flex items-center py-3 group">
                 {link.label}
                 {/* Active indicator / Hover indicator */}
-                <span className={`absolute bottom-[10px] left-0 w-full h-[1px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left ${isActive ? 'scale-x-100' : ''}`} />
+                <span className={`absolute bottom-[8px] left-0 w-full h-[2px] bg-[#d4a843] scale-x-0 group-hover:scale-x-100 transition-transform origin-left ${isActive ? 'scale-x-100' : ''}`} />
               </Link>
             )
           })}
-          <Link href="/contact" className="ml-4 flex items-center px-6 py-2 bg-primary text-primary-foreground font-sans font-bold text-xs hover:bg-white hover:text-background transition-colors duration-300 min-h-[44px]">
+          <Link href="/contact" className="ml-4 flex items-center px-6 py-2 bg-[#d4a843] text-[#061423] font-sans font-bold text-xs hover:bg-white hover:text-[#061423] transition-colors duration-300 min-h-[44px]">
             INQUIRY
           </Link>
         </nav>
@@ -106,11 +106,11 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    className="group relative flex items-center justify-between text-2xl font-serif text-foreground hover:text-primary transition-colors py-3 min-h-[44px]"
+                    className="group relative flex items-center justify-between text-2xl font-serif text-foreground hover:text-[#d4a843] transition-colors py-3 min-h-[44px]"
                     onClick={() => setIsOpen(false)}
                   >
                     <span>{link.label}</span>
-                    <ArrowRight className="w-5 h-5 text-primary/50 group-hover:text-primary transition-colors" />
+                    <ArrowRight className="w-5 h-5 text-[#d4a843]/50 group-hover:text-[#d4a843] transition-colors" />
                   </Link>
                   <div className="w-full h-[1px] bg-border/30 mt-4" />
                 </motion.div>
@@ -125,7 +125,7 @@ export default function Navbar() {
               >
                 <Link
                   href="/contact"
-                  className="flex items-center justify-center w-full py-5 bg-primary/10 border-[1px] border-primary text-primary font-serif font-bold tracking-widest text-xl hover:bg-primary hover:text-primary-foreground transition-colors min-h-[44px]"
+                  className="flex items-center justify-center w-full py-5 bg-[#d4a843] text-[#061423] font-serif font-bold tracking-widest text-xl hover:bg-white transition-colors min-h-[44px]"
                   onClick={() => setIsOpen(false)}
                 >
                   INQUIRY

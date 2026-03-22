@@ -25,7 +25,12 @@ const notoSans = Noto_Sans_JP({
 
 export const metadata: Metadata = {
   title: "MONOLITH & SILK | 時を超える建築を、この地に。",
-  description: "The Monolith & The Silk - 最高峰の建築デモ",
+  description: "株式会社デモ建築の公式サイト。建築・土木・リフォーム・外壁・足場・造園など建築全般に対応。東京都を中心に全国対応。",
+  openGraph: {
+    title: "MONOLITH & SILK | 時を超える建築を、この地に。",
+    description: "株式会社デモ建築の公式サイト。",
+    locale: "ja_JP",
+  },
 };
 
 export default function RootLayout({
