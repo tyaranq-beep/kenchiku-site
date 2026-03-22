@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import FAQSection from "@/components/sections/faq-section";
+import { Building2, Home, Building, Shield, Hammer, TreePine } from "lucide-react";
 
 const EASE_OUT = [0.76, 0, 0.24, 1] as const;
 
@@ -68,8 +69,13 @@ export default function ServicesPage() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: index * 0.1, ease: EASE_OUT }}
             >
-              <div className="col-span-1 md:col-span-5 relative aspect-[4/3] bg-surface-container-high border-[1px] border-border/20 flex items-center justify-center">
-                 <p className="text-foreground/20 font-sans tracking-widest text-xs">IMG_{service.id}</p>
+              <div className="col-span-1 md:col-span-5 relative aspect-[4/3] bg-surface-container-high border-[1px] border-border/20 flex items-center justify-center group overflow-hidden">
+                 {service.id === "01" && <Building2 className="w-16 h-16 text-primary/40 group-hover:text-primary transition-colors" />}
+                 {service.id === "02" && <Home className="w-16 h-16 text-primary/40 group-hover:text-primary transition-colors" />}
+                 {service.id === "03" && <Building className="w-16 h-16 text-primary/40 group-hover:text-primary transition-colors" />}
+                 {service.id === "04" && <Shield className="w-16 h-16 text-primary/40 group-hover:text-primary transition-colors" />}
+                 {service.id === "05" && <Hammer className="w-16 h-16 text-primary/40 group-hover:text-primary transition-colors" />}
+                 {service.id === "06" && <TreePine className="w-16 h-16 text-primary/40 group-hover:text-primary transition-colors" />}
               </div>
               <div className="col-span-1 md:col-span-7 md:pl-16">
                 <div className="flex items-end gap-4 mb-6">

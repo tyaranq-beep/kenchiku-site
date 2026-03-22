@@ -31,7 +31,7 @@ const faqs = [
 
 export default function FAQSection() {
   return (
-    <section className="w-full py-24 bg-background">
+    <section className="w-full py-24 bg-background grid-pattern">
       <div className="max-w-4xl mx-auto w-full px-8">
         <motion.div
            initial={{ y: 20, opacity: 0 }}

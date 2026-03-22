@@ -46,7 +46,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="w-full relative min-h-screen pb-24 z-10">
+    <div className="w-full relative min-h-screen pb-24 z-10 grid-pattern">
       {/* Page Hero */}
       <section className="relative w-full h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden mb-16">
         <div className="absolute inset-0 bg-surface-container-low" />

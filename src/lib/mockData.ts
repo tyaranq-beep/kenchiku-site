@@ -1,8 +1,8 @@
 export const navigationLinks = [
-  { href: "/", label: "PROJECTS" },
-  { href: "/services", label: "SERVICES" },
-  { href: "/works", label: "ARCHIVE" },
-  { href: "/company", label: "CULTURE" },
+  { href: "/", label: "プロジェクト" },
+  { href: "/services", label: "サービス" },
+  { href: "/works", label: "ギャラリー" },
+  { href: "/company", label: "企業情報" },
 ];
 
 // カテゴリ別 SVG プレースホルダー画像（外部依存ゼロ・Vercel対応）

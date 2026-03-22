@@ -7,11 +7,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/", label: "PROJECTS" },
-  { href: "/services", label: "SERVICES" },
-  { href: "/works", label: "ARCHIVE" },
-  { href: "/company", label: "CULTURE" },
-  { href: "/contact", label: "CONTACT" },
+  { href: "/", label: "プロジェクト" },
+  { href: "/services", label: "サービス" },
+  { href: "/works", label: "ギャラリー" },
+  { href: "/company", label: "企業情報" },
+  { href: "/contact", label: "お問い合わせ" },
 ];
 
 export default function Navbar() {

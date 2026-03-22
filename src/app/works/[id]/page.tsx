@@ -105,7 +105,7 @@ export default function WorkDetail({ params }: { params: { id: string } }) {
                  </div>
                </div>
                <div className="relative w-full h-full bg-surface-container-high border border-border/10">
-                 <Image src="https://images.unsplash.com/photo-1558904541-efa843a96f09?q=80&w=2070&auto=format&fit=crop" fill alt="Archive 04" className="object-cover" />
+                 <Image src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop" fill alt="Archive 04" className="object-cover" />
                </div>
             </div>
           </div>

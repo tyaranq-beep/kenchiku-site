@@ -105,7 +105,7 @@ export default function Home() {
           style={{ y: textY, opacity }}
         >
           <motion.div 
-            className="mb-8 flex flex-col gap-2"
+            className="mb-8 flex flex-col gap-2 mt-20 md:mt-32"
             initial="hidden"
             animate="visible"
             transition={{ staggerChildren: 0.2, delayChildren: 2.3 }}
@@ -154,7 +154,7 @@ export default function Home() {
       </section>
 
       {/* Intro Section - Overlaps Hero */}
-      <section className="sticky top-0 w-full min-h-[80vh] bg-surface-container-low py-32 px-8 flex items-center z-20 rounded-b-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+      <section className="relative w-full min-h-[80vh] bg-surface-container-low py-32 px-8 flex items-center z-20 rounded-b-3xl shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
         <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <motion.div 
             className="relative w-full aspect-[4/5] overflow-hidden"

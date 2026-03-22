@@ -38,7 +38,7 @@ export default function VoicesSection() {
   };
 
   return (
-    <section className="w-full py-32 bg-surface-container-low relative z-20 overflow-hidden">
+    <section className="w-full py-32 bg-surface-container-low relative z-20 overflow-hidden grid-pattern">
       <div className="max-w-7xl mx-auto w-full px-6 md:px-12 mb-16">
         <motion.h2 
           className="text-4xl md:text-6xl lg:text-7xl font-serif text-primary tracking-widest mb-6"
