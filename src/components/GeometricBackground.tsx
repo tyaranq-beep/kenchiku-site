@@ -1,7 +1,7 @@
 // components/GeometricBackground.tsx
 "use client"
 
-import { motion, useReducedMotion } from "framer-motion"
+import { motion } from "framer-motion"
 
 function hexPoints(cx: number, cy: number, r: number): string {
   return Array.from({ length: 6 }, (_, i) => {
@@ -35,7 +35,6 @@ const CX = 340
 const CY = 360
 
 export default function GeometricBackground() {
-  const prefersReduced = useReducedMotion()
 
   return (
     <div
