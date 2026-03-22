@@ -70,7 +70,7 @@ export default function ContactPage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            REACH OUT TO OUR EXPERTS
+            専門家へのお問い合わせ
           </motion.p>
         </div>
       </section>
@@ -211,26 +211,26 @@ export default function ContactPage() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="bg-surface-container-low border border-border/10 p-8 md:p-12 h-fit lg:sticky lg:top-32"
             >
-              <h2 className="text-2xl font-serif text-foreground tracking-widest mb-10">OFFICE INFO</h2>
+              <h2 className="text-2xl font-serif text-foreground tracking-widest mb-10">オフィス情報</h2>
               
               <div className="space-y-8 font-sans text-sm text-foreground/80 mb-12">
                 <div>
-                  <h3 className="text-[#d4a843] text-xs tracking-widest uppercase mb-2">LOCATION</h3>
+                  <h3 className="text-[#d4a843] text-xs tracking-widest uppercase mb-2">所在地</h3>
                   <p className="leading-relaxed">〒107-0062<br/>東京都港区南青山 5-10-23<br/>MONOLITH BLDG 4F</p>
                 </div>
                 
                 <div>
-                  <h3 className="text-[#d4a843] text-xs tracking-widest uppercase mb-2">DIRECT LINE</h3>
+                  <h3 className="text-[#d4a843] text-xs tracking-widest uppercase mb-2">直通ダイヤル</h3>
                   <p className="text-foreground text-[20px] font-medium tracking-wider">03-XXXX-XXXX</p>
                 </div>
 
                 <div>
-                  <h3 className="text-[#d4a843] text-xs tracking-widest uppercase mb-2">EMAIL</h3>
+                  <h3 className="text-[#d4a843] text-xs tracking-widest uppercase mb-2">メールアドレス</h3>
                   <p className="tracking-wide">info@monolith-silk.arch</p>
                 </div>
 
                 <div>
-                  <h3 className="text-[#d4a843] text-xs tracking-widest uppercase mb-2">HOURS</h3>
+                  <h3 className="text-[#d4a843] text-xs tracking-widest uppercase mb-2">営業時間</h3>
                   <p className="tracking-wide">平日 9:00〜18:00（土日祝休）</p>
                 </div>
               </div>
@@ -240,7 +240,7 @@ export default function ContactPage() {
                   <div className="mb-6">
                     <QrCode className="w-[60px] h-[60px] text-[#d4a843]" />
                   </div>
-                  <h3 className="text-foreground font-sans font-bold text-sm tracking-widest mb-4">Official LINE</h3>
+                  <h3 className="text-foreground font-sans font-bold text-sm tracking-widest mb-4">公式 LINE</h3>
                   <p className="text-foreground/70 font-sans text-xs leading-relaxed max-w-[200px] mx-auto">
                     QRコードをスキャンしてLINEでのお問い合わせも承っております。
                   </p>

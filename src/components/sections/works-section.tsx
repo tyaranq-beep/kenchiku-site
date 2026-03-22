@@ -24,7 +24,7 @@ export default function WorksSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          PORTFOLIO OF EXCELLENCE
+          これまでの軌跡
         </motion.p>
       </div>
 

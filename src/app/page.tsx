@@ -113,7 +113,7 @@ export default function Home() {
             transition={{ staggerChildren: 0.2, delayChildren: 2.3 }}
           >
             <motion.p variants={lineVariants} className="font-sans text-[11px] tracking-[0.15em] text-[#d4a843] mb-2 uppercase">
-              ESTABLISHED 1959 — TOKYO
+              創業 1959年 — 東京
             </motion.p>
             <div className="overflow-hidden py-2 px-1">
               <motion.h1 variants={lineVariants} className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#e8f0f8] tracking-tight leading-tight uppercase font-bold text-shadow-lg drop-shadow-md">
@@ -196,7 +196,7 @@ export default function Home() {
                   visible: { opacity: 1, transition: { duration: 0.4 } }
                 }}
               >
-                Philosophy
+                企業理念
               </motion.p>
               <div className="overflow-hidden">
                 <motion.h2 

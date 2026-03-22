@@ -65,7 +65,7 @@ export default function CompanyPage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            OUR FOUNDATION & PEOPLE
+            私たちの基盤と理念
           </motion.p>
         </div>
       </section>
@@ -124,7 +124,7 @@ export default function CompanyPage() {
             <div className="grid grid-cols-1 md:grid-cols-4 py-6 border-b border-border/10">
               <div className="text-foreground/50 font-sans tracking-widest text-xs uppercase mb-2 md:mb-0">所在地</div>
               <div className="md:col-span-3 text-foreground font-sans text-sm tracking-wide leading-relaxed">
-                〒000-0000<br/>東京都〇〇区〇〇1-2-3 デモビル 99F
+                〒107-0062<br/>東京都港区南青山 5-10-23 MONOLITH BLDG 4F
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 py-6 border-b border-border/10">
@@ -232,7 +232,12 @@ export default function CompanyPage() {
                     onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                   />
                 </div>
-                <h3 className="text-lg font-bold font-sans text-foreground mb-1 group-hover:text-[#d4a843] transition-colors">{member.name}</h3>
+                <h3 className="text-lg font-bold font-sans text-foreground mb-1 group-hover:text-[#d4a843] transition-colors flex items-end">
+                  <ruby>
+                    {member.name}
+                    <rt className="text-[10px] text-foreground/50 font-normal tracking-widest mb-1">{member.ruby}</rt>
+                  </ruby>
+                </h3>
                 <p className="text-[#d4a843] font-sans text-[10px] tracking-widest uppercase">{member.role}</p>
               </motion.div>
             ))}

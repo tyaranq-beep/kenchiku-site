@@ -36,38 +36,41 @@ export default function Footer() {
           <h3 className="text-primary font-serif font-bold tracking-widest text-sm mb-2">法的情報</h3>
           <ul className="flex flex-col gap-1 text-xs tracking-widest text-foreground/80 font-sans">
             <li>
-              <Link href="#" className="hover:text-primary transition-colors py-2 flex items-center min-h-[44px] w-fit">
+              <Link href="/" className="hover:text-primary transition-colors py-2 flex items-center min-h-[44px] w-fit">
                 プライバシーポリシー
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-primary transition-colors py-2 flex items-center min-h-[44px] w-fit">
+              <Link href="/" className="hover:text-primary transition-colors py-2 flex items-center min-h-[44px] w-fit">
                 利用規約
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-primary transition-colors py-2 flex items-center min-h-[44px] w-fit">
+              <Link href="/" className="hover:text-primary transition-colors py-2 flex items-center min-h-[44px] w-fit">
                 採用情報
               </Link>
             </li>
           </ul>
         </div>
 
-        {/* Social Column */}
+        {/* Social & Contact Column */}
         <div className="col-span-1 flex flex-col gap-4">
-          <h3 className="text-primary font-serif font-bold tracking-widest text-sm mb-2">ソーシャル</h3>
-          <ul className="flex flex-col gap-1 text-xs tracking-widest text-foreground/80 font-sans">
-            <li>
-              <a href="#" className="hover:text-primary transition-colors py-2 flex items-center min-h-[44px] w-fit">
-                Instagram
-              </a>
-            </li>
+          <h3 className="text-primary font-serif font-bold tracking-widest text-sm mb-2">お問い合わせ・所在地</h3>
+          <div className="text-xs tracking-widest text-foreground/80 font-sans leading-relaxed">
+            <p className="mb-2">
+              〒107-0062<br />
+              東京都港区南青山 5-10-23<br />
+              MONOLITH BLDG 4F
+            </p>
+            <p>TEL: 03-XXXX-XXXX</p>
+          </div>
+          <ul className="flex flex-col gap-1 mt-2 text-xs tracking-widest text-foreground/80 font-sans">
             <li>
               <div className="flex items-center gap-4 py-2 min-h-[44px]">
-                <a href="#" className="hover:text-primary transition-colors p-2 -ml-2">
+                <a href="/" className="hover:text-primary transition-colors p-2 -ml-2">
                   <Twitter className="w-5 h-5" />
                 </a>
-                <a href="#" className="hover:text-primary transition-colors p-2">
+                <a href="/" className="hover:text-primary transition-colors p-2">
                   <Instagram className="w-5 h-5" />
                 </a>
               </div>

@@ -151,10 +151,10 @@ export const mockWorks = [
 ];
 
 export const mockTeam = [
-  { name: "九条 誠一郎", role: "代表取締役社長", img: svgPlaceholder("代表", "person") },
-  { name: "西園寺 麗子", role: "クリエイティブディレクター", img: svgPlaceholder("CD", "person") },
-  { name: "橘 宗助", role: "チーフエンジニア", img: svgPlaceholder("CE", "person") },
-  { name: "神宮寺 麻衣", role: "リードアーキテクト", img: svgPlaceholder("LA", "person") },
-  { name: "御子柴 健", role: "BIMスペシャリスト", img: svgPlaceholder("BIM", "person") },
-  { name: "白銀 杏", role: "ランドスケープデザイナー", img: svgPlaceholder("LD", "person") },
+  { name: "九条 誠一郎", ruby: "クジョウ セイイチロウ", role: "代表取締役社長", img: svgPlaceholder("代表", "person") },
+  { name: "西園寺 麗子", ruby: "サイオンジ レイコ", role: "クリエイティブディレクター", img: svgPlaceholder("CD", "person") },
+  { name: "橘 宗助", ruby: "タチバナ ソウスケ", role: "チーフエンジニア", img: svgPlaceholder("CE", "person") },
+  { name: "神宮寺 麻衣", ruby: "ジングウジ マイ", role: "リードアーキテクト", img: svgPlaceholder("LA", "person") },
+  { name: "御子柴 健", ruby: "ミコシバ ケン", role: "BIMスペシャリスト", img: svgPlaceholder("BIM", "person") },
+  { name: "白銀 杏", ruby: "シロガネ アン", role: "ランドスケープデザイナー", img: svgPlaceholder("LD", "person") },
 ];

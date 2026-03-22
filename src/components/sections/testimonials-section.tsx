@@ -38,13 +38,13 @@ export default function VoicesSection() {
     <section className="w-full py-32 bg-surface-container-low relative z-20 overflow-hidden grid-pattern">
       <div className="max-w-4xl mx-auto w-full px-6 flex flex-col items-center">
         <motion.p 
-          className="text-[#d4a843] font-sans font-bold tracking-[0.2em] text-sm uppercase mb-4"
+          className="text-[#d4a843] font-sans font-bold tracking-[0.2em] text-sm mb-4"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          CLIENT VOICES
+          クライアントの声
         </motion.p>
         <motion.h2 
           className="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground mb-16 text-center"

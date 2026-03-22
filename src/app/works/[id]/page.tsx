@@ -97,7 +97,7 @@ export default function WorkDetail({ params }: { params: { id: string } }) {
                    <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop" alt="Gallery 2" className="w-full h-full object-cover" />
                  </div>
                  <div className="relative w-full h-full overflow-hidden border border-border/10">
-                   <img src="https://images.unsplash.com/photo-1600566753086-00f18efc2291?q=80&w=2000&auto=format&fit=crop" alt="Gallery 3" className="w-full h-full object-cover" />
+                   <img src="https://images.unsplash.com/photo-1541888018318-7b9c65651aa9?q=80&w=2000&auto=format&fit=crop" alt="Gallery 3" className="w-full h-full object-cover" />
                  </div>
                </div>
                <div className="relative w-full h-full overflow-hidden border border-border/10">

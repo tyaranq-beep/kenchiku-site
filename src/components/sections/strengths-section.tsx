@@ -31,12 +31,12 @@ export default function StrengthsSection() {
       <div className="max-w-7xl mx-auto w-full">
         <div className="flex flex-col mb-16">
           <motion.p 
-            className="text-[#d4a843] font-sans text-sm font-bold tracking-widest uppercase mb-4"
+            className="text-[#d4a843] font-sans text-sm font-bold tracking-widest mb-4"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            OUR STRENGTHS
+            私たちの強み
           </motion.p>
           <motion.h2 
             className="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground mb-6"
@@ -67,7 +67,7 @@ export default function StrengthsSection() {
               transition={{ duration: 0.8 }}
             >
               <h3 className="text-7xl md:text-8xl font-serif text-[#d4a843] mb-2 shadow-sm">65+</h3>
-              <p className="font-sans font-bold tracking-widest text-foreground/60 uppercase text-sm">YEARS OF EXPERTISE</p>
+              <p className="font-sans font-bold tracking-widest text-foreground/60 text-sm">年の歴史と実績</p>
             </motion.div>
             
             <motion.div
@@ -77,7 +77,7 @@ export default function StrengthsSection() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <h3 className="text-7xl md:text-8xl font-serif text-[#d4a843] mb-2 shadow-sm">2.4k</h3>
-              <p className="font-sans font-bold tracking-widest text-foreground/60 uppercase text-sm">PROJECTS COMPLETED</p>
+              <p className="font-sans font-bold tracking-widest text-foreground/60 text-sm">件以上の施工実績</p>
             </motion.div>
           </div>
 

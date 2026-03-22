@@ -7,11 +7,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/works", label: "PROJECTS", matchPattern: "/works" },
-  { href: "/services", label: "SERVICES", matchPattern: "/services" },
-  { href: "/works", label: "ARCHIVE", matchPattern: "/works" },
-  { href: "/company", label: "CULTURE", matchPattern: "/company" },
-  { href: "/contact", label: "CONTACT", matchPattern: "/contact" },
+  { href: "/works", label: "ギャラリー", matchPattern: "/works" },
+  { href: "/services", label: "サービス", matchPattern: "/services" },
+  { href: "/company", label: "企業情報", matchPattern: "/company" },
 ];
 
 export default function Navbar() {
@@ -60,7 +58,7 @@ export default function Navbar() {
             )
           })}
           <Link href="/contact" className="ml-4 flex items-center px-6 py-2 bg-[#d4a843] text-[#061423] font-sans font-bold text-xs hover:bg-white hover:text-[#061423] transition-colors duration-300 min-h-[44px]">
-            INQUIRY
+            お問い合わせ
           </Link>
         </nav>
 
@@ -128,7 +126,7 @@ export default function Navbar() {
                   className="flex items-center justify-center w-full py-5 bg-[#d4a843] text-[#061423] font-serif font-bold tracking-widest text-xl hover:bg-white transition-colors min-h-[44px]"
                   onClick={() => setIsOpen(false)}
                 >
-                  INQUIRY
+                  お問い合わせ
                 </Link>
               </motion.div>
             </nav>

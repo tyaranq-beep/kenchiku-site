@@ -53,12 +53,12 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto w-full">
         <div className="flex flex-col mb-16">
           <motion.p 
-            className="text-[#d4a843] font-sans text-[11px] tracking-widest lowercase mb-2"
+            className="text-[#d4a843] font-sans text-[11px] tracking-widest mb-2"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            our services
+            私たちのサービス
           </motion.p>
           <motion.h2 
             className="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground mb-4"
@@ -88,8 +88,7 @@ export default function ServicesSection() {
                     {service.icon}
                   </div>
                 </div>
-                <h4 className="text-xl font-bold font-sans text-foreground mb-1 tracking-wider">{service.enTitle}</h4>
-                <h3 className="text-sm font-sans text-foreground/70 mb-6">{service.title}</h3>
+                <h3 className="text-xl font-bold font-sans text-foreground mb-4 tracking-wider">{service.title}</h3>
                 <p className="text-sm text-foreground/60 leading-relaxed font-sans min-h-[40px]">{service.desc}</p>
               </div>
               <div className="mt-8 flex items-center text-[#d4a843] font-sans text-xs font-bold tracking-widest group">
