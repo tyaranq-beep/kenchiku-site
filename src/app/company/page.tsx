@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { mockTeam } from "@/lib/mockData";
 
 const EASE_OUT = [0.76, 0, 0.24, 1] as const;
@@ -44,11 +43,11 @@ export default function CompanyPage() {
           transition={{ duration: 0.8, ease: EASE_OUT }}
         >
           <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-            <div className="w-48 h-48 md:w-64 md:h-64 relative rounded-full overflow-hidden shrink-0 border border-border/10">
-              <Image 
-                src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=2070&auto=format&fit=crop" 
-                alt="CEO" fill className="object-cover grayscale" 
-              />
+            <div className="w-48 h-48 md:w-64 md:h-64 relative rounded-full overflow-hidden shrink-0 border border-primary/20 bg-surface-container-high flex items-center justify-center">
+              <svg width="80" height="80" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-40">
+                <circle cx="50" cy="35" r="18" stroke="#d4a843" strokeWidth="2"/>
+                <path d="M20 90 C20 68 80 68 80 90" stroke="#d4a843" strokeWidth="2" fill="none"/>
+              </svg>
             </div>
             <div>
               <h2 className="text-3xl font-serif text-primary mb-6">常に本質を問い続ける。</h2>
@@ -76,7 +75,7 @@ export default function CompanyPage() {
           <div className="border-t border-border/20">
             <div className="grid grid-cols-1 md:grid-cols-4 py-6 border-b border-border/10">
               <div className="text-foreground/50 font-sans tracking-widest text-xs uppercase mb-2 md:mb-0">社名</div>
-              <div className="md:col-span-3 text-foreground font-sans text-sm tracking-wide">株式会社モノリス＆シルク デモ</div>
+              <div className="md:col-span-3 text-foreground font-sans text-sm tracking-wide">株式会社モノリス＆シルク</div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 py-6 border-b border-border/10">
               <div className="text-foreground/50 font-sans tracking-widest text-xs uppercase mb-2 md:mb-0">設立</div>
@@ -172,13 +171,13 @@ export default function CompanyPage() {
                 transition={{ delay: idx * 0.1, duration: 0.8 }}
                 className="group cursor-pointer"
               >
-                <div className="relative w-full aspect-[3/4] overflow-hidden mb-6 border border-border/10 bg-surface-container-high">
-                   <Image 
-                     src={member.img} 
-                     alt={member.name} 
-                     fill 
-                     className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" 
-                   />
+                <div className="relative w-full aspect-[3/4] overflow-hidden mb-6 border border-border/10 bg-surface-container-high flex items-center justify-center">
+                  <img 
+                    src={member.img}
+                    alt={member.name}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                  />
                 </div>
                 <h3 className="text-lg font-bold font-sans text-foreground mb-1 group-hover:text-primary transition-colors">{member.name}</h3>
                 <p className="text-primary font-sans text-[10px] tracking-widest uppercase">{member.role}</p>

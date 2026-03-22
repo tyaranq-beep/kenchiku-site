@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -179,7 +178,7 @@ export default function ContactPage() {
               
               <div className="space-y-6 font-sans text-sm text-foreground/80 mb-12">
                 <div>
-                  <p className="font-bold text-foreground mb-2">株式会社モノリス＆シルク デモ</p>
+                  <p className="font-bold text-foreground mb-2">株式会社モノリス＆シルク</p>
                   <p>〒000-0000</p>
                   <p>東京都〇〇区〇〇1-2-3</p>
                   <p>デモビル 99F</p>
@@ -202,15 +201,13 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Dark Map Placeholder */}
+              {/* Map SVG プレースホルダー */}
               <div className="relative w-full aspect-[4/3] bg-surface-container-highest border border-border/20 overflow-hidden cursor-pointer group">
-                <Image 
-                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2074&auto=format&fit=crop" 
-                  fill 
-                  alt="Map Location" 
-                  className="object-cover opacity-50 grayscale contrast-125 mix-blend-luminosity group-hover:opacity-80 group-hover:mix-blend-normal group-hover:scale-105 transition-all duration-700" 
-                />
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+                  <svg width="56" height="56" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-30">
+                    <path d="M50 20 C38 20 28 30 28 42 C28 56 50 80 50 80 C50 80 72 56 72 42 C72 30 62 20 50 20 Z" stroke="#d4a843" strokeWidth="2"/>
+                    <circle cx="50" cy="42" r="8" fill="#d4a843" opacity=".4"/>
+                  </svg>
                   <span className="text-primary font-sans text-xs tracking-widest font-bold bg-background/90 px-6 py-3 border border-primary/30 shadow-2xl">
                     マップで見る
                   </span>
