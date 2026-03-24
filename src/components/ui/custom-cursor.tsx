@@ -26,8 +26,9 @@ export default function CustomCursor() {
     window.addEventListener("mousemove", handleFirstMove);
 
     const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX - 20); 
-      cursorY.set(e.clientY - 20);
+      // ベースサイズを120pxとするため、中心点のオフセットは-60とする
+      cursorX.set(e.clientX - 60); 
+      cursorY.set(e.clientY - 60);
       innerCursorX.set(e.clientX - 3);
       innerCursorY.set(e.clientY - 3);
     };
@@ -53,24 +54,39 @@ export default function CustomCursor() {
     };
   }, [cursorX, cursorY, innerCursorX, innerCursorY]);
 
+  // アニメーション時のスケール値（ベースが120px）
+  // 元の40px = 120 * 0.333
+  // linkの100px (40*2.5) = 120 * 0.833
+  // viewの120px (40*3) = 120 * 1.0
+  const getScale = () => {
+    switch(hoverState) {
+      case "link": return 0.833;
+      case "view": return 1.0;
+      default: return 0.333;
+    }
+  };
+
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-[40px] h-[40px] border-[1.5px] border-primary rounded-full pointer-events-none z-[9999] hidden md:flex items-center justify-center will-change-transform"
+        className="fixed top-0 left-0 w-[120px] h-[120px] rounded-full pointer-events-none z-[9999] hidden md:flex items-center justify-center will-change-transform"
         style={{ 
           x: cursorXSpring, 
           y: cursorYSpring, 
-          mixBlendMode: hoverState === "link" ? "difference" : "normal" 
+          mixBlendMode: hoverState === "link" ? "difference" : "normal",
+          borderWidth: "4.5px", // 0.333スケール時に1.5pxになるよう計算
+          borderColor: "hsl(var(--primary))",
+          borderStyle: "solid"
         }}
         animate={{
-          scale: hoverState === "link" ? 2.5 : hoverState === "view" ? 3 : 1,
+          scale: getScale(),
           backgroundColor: hoverState === "link" ? "#eec058" : "transparent",
           opacity: hasMoved ? 1 : 0
         }}
         transition={{ duration: 0.15, ease: "easeOut" }}
       >
         {hoverState === "view" && (
-          <span className="text-[5px] scale-75 font-sans font-bold text-primary tracking-widest absolute">
+          <span className="text-[11px] font-sans font-bold text-primary tracking-widest absolute">
             VIEW
           </span>
         )}

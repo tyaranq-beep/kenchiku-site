@@ -7,8 +7,8 @@ import WorksSection from "@/components/sections/works-section";
 import StrengthsSection from "@/components/sections/strengths-section";
 import VoicesSection from "@/components/sections/testimonials-section"; 
 import Link from "next/link";
+import Image from "next/image";
 import { StatCounter } from "@/components/StatCounter";
-import { PlaceholderImage } from "@/components/PlaceholderImage";
 
 const EASE_OUT = [0.76, 0, 0.24, 1] as const;
 
@@ -94,9 +94,9 @@ export default function Home() {
           className="absolute inset-0 w-full h-full will-change-transform"
           style={{ y: bgY }}
         >
-          {/* Placeholder Background */}
+          {/* Hero Background */}
           <div className="absolute inset-0">
-             <PlaceholderImage label="Hero Image" className="w-full h-full" iconSize={64} />
+             <Image src="/images/hero-bg.jpg" alt="Hero Image" fill priority className="object-cover" />
           </div>
           <div className="absolute inset-0 bg-background/70 z-10" />
           <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background/90 via-background/40 to-transparent z-10" />
@@ -113,15 +113,15 @@ export default function Home() {
             transition={{ staggerChildren: 0.2, delayChildren: 2.3 }}
           >
             <motion.p variants={lineVariants} className="font-sans text-[11px] tracking-[0.15em] text-[#d4a843] mb-2 uppercase">
-              創業 1959年 — 東京
+              ESTABLISHED 1959 — TOKYO
             </motion.p>
-            <div className="overflow-hidden py-2 px-1">
-              <motion.h1 variants={lineVariants} className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#e8f0f8] tracking-tight leading-tight uppercase font-bold text-shadow-lg drop-shadow-md">
+            <div className="overflow-visible py-4 px-2">
+              <motion.h1 variants={lineVariants} className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#e8f0f8] tracking-tight leading-normal uppercase font-bold text-shadow-lg drop-shadow-md">
                 時を超える建築を、
               </motion.h1>
             </div>
-            <div className="overflow-hidden py-2 px-1">
-              <motion.h1 variants={lineVariants} className="flex items-center text-4xl md:text-5xl lg:text-6xl font-serif text-[#d4a843] italic tracking-tight leading-tight uppercase font-bold text-shadow-lg drop-shadow-md">
+            <div className="overflow-visible py-4 px-2 -mt-4">
+              <motion.h1 variants={lineVariants} className="flex items-center text-4xl md:text-5xl lg:text-6xl font-serif text-[#d4a843] italic tracking-tight leading-normal uppercase font-bold text-shadow-lg drop-shadow-md">
                 この地に。
               </motion.h1>
             </div>

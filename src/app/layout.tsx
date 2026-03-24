@@ -10,6 +10,7 @@ import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import GeometricBackground from "@/components/GeometricBackground";
 import DemoBanner from "@/components/ui/DemoBanner";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const notoSerif = Noto_Serif_JP({
   subsets: ["latin"],
@@ -42,6 +43,7 @@ export default function RootLayout({
     <html lang="ja" className={cn("dark", notoSerif.variable, notoSans.variable)}>
       <body className="antialiased selection:bg-primary selection:text-primary-foreground">
         <LenisProvider>
+          <ScrollToTop />
           <DemoBanner />
           <GeometricBackground />
           <InitialLoader />

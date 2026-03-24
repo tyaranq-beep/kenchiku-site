@@ -58,9 +58,9 @@ export default function Footer() {
           <h3 className="text-primary font-serif font-bold tracking-widest text-sm mb-2">お問い合わせ・所在地</h3>
           <div className="text-xs tracking-widest text-foreground/80 font-sans leading-relaxed">
             <p className="mb-2">
-              〒107-0062<br />
-              東京都港区南青山 5-10-23<br />
-              MONOLITH BLDG 4F
+              〒000-0000<br />
+              東京都〇〇区〇〇 1-1-1<br />
+              デモビル 30F
             </p>
             <p>TEL: 03-XXXX-XXXX</p>
           </div>

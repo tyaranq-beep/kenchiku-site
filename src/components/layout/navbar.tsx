@@ -7,9 +7,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/works", label: "ギャラリー", matchPattern: "/works" },
-  { href: "/services", label: "サービス", matchPattern: "/services" },
+  { href: "/works", label: "施工事例", matchPattern: "/works" },
+  { href: "/services", label: "事業内容", matchPattern: "/services" },
   { href: "/company", label: "企業情報", matchPattern: "/company" },
+  { href: "/contact", label: "お問い合わせ", matchPattern: "/contact" },
 ];
 
 export default function Navbar() {
@@ -114,21 +115,6 @@ export default function Navbar() {
                 </motion.div>
               ))}
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ delay: 0.2 + links.length * 0.05, duration: 0.4 }}
-                className="mt-8"
-              >
-                <Link
-                  href="/contact"
-                  className="flex items-center justify-center w-full py-5 bg-[#d4a843] text-[#061423] font-serif font-bold tracking-widest text-xl hover:bg-white transition-colors min-h-[44px]"
-                  onClick={() => setIsOpen(false)}
-                >
-                  お問い合わせ
-                </Link>
-              </motion.div>
             </nav>
           </motion.div>
         )}

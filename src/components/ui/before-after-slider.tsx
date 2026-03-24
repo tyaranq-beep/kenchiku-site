@@ -2,11 +2,11 @@
 
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-// import Image from "next/image";
+import Image from "next/image";
 
 export default function BeforeAfterSlider({
-  // beforeImage,
-  // afterImage,
+  beforeImage = "/images/work-01-before.jpg",
+  afterImage = "/images/work-01-after.jpg",
 }: {
   beforeImage?: string;
   afterImage?: string;
@@ -31,8 +31,7 @@ export default function BeforeAfterSlider({
   }, []);
 
   // Converting percentage motion value to CSS pixel values for the drag constraints
-  // const dragConstraints = { left: 0, right: containerWidth };
-  const dragX = useMotionValue(containerWidth / 2);
+  const dragX = useMotionValue(0);
 
   useEffect(() => {
     if (containerWidth > 0) {
@@ -58,19 +57,25 @@ export default function BeforeAfterSlider({
     >
       {/* After image (background) */}
       <div className="absolute inset-0">
-        <div className="w-full h-full bg-surface-container-highest flex items-center justify-center border-[1px] border-border/20">
-           <p className="text-foreground/30 font-sans tracking-widest text-sm">AFTER (RENOVATED)</p>
-        </div>
+        <Image
+          src={afterImage}
+          alt="After"
+          fill
+          className="object-cover"
+        />
       </div>
 
       {/* Before image (foreground layer masked) */}
       <motion.div 
-        className="absolute inset-0 z-10 will-change-transform"
+        className="absolute inset-0 z-10 will-change-transform border-r-[1.5px] border-primary"
         style={{ clipPath: beforeClipPath }}
       >
-        <div className="w-full h-full bg-surface-container-low flex items-center justify-center border-r-[1.5px] border-primary">
-           <p className="text-foreground/30 font-sans tracking-widest text-sm text-center">BEFORE<br/>(ORIGINAL)</p>
-        </div>
+        <Image
+          src={beforeImage}
+          alt="Before"
+          fill
+          className="object-cover"
+        />
       </motion.div>
 
       {/* Drag handle line */}
@@ -85,13 +90,12 @@ export default function BeforeAfterSlider({
         <motion.div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-lg border-[2px] border-surface-container-low cursor-grab active:cursor-grabbing will-change-transform"
           drag="x"
-          dragConstraints={{ left: -containerWidth / 2, right: containerWidth / 2 }} // Because it's absolutely positioned at %
+          dragConstraints={containerRef}
           dragElastic={0}
           dragMomentum={false}
           onDrag={(e, info) => {
              if (!containerRef.current) return;
              const rect = containerRef.current.getBoundingClientRect();
-             // calculate new percentage based on mouse position relative to container
              const pointerX = info.point.x - rect.left;
              const percentage = Math.max(0, Math.min(100, (pointerX / rect.width) * 100));
              x.set(percentage);

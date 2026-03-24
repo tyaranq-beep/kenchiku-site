@@ -1,7 +1,6 @@
 "use client"
 import { useEffect, useRef, useState } from "react"
 import { useInView } from "framer-motion"
-import { animate } from "framer-motion"
 
 interface StatCounterProps {
   target: number
@@ -14,16 +13,30 @@ export function StatCounter({ target, suffix, label, duration = 2.5 }: StatCount
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const [value, setValue] = useState(0)
-
   useEffect(() => {
-    if (!isInView) return
-    const controls = animate(0, target, {
-      duration,
-      ease: [0.76, 0, 0.24, 1],
-      onUpdate: (v) => setValue(Math.round(v)),
-    })
-    return () => controls.stop()
-  }, [isInView, target, duration])
+    if (!isInView) return;
+    
+    let startTime: number | null = null;
+    let animationFrameId: number;
+    const durationMs = duration * 1000;
+
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / durationMs, 1);
+      
+      // EasingOutQuad
+      const easeProgress = progress * (2 - progress);
+      setValue(Math.round(easeProgress * target));
+
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(step);
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(step);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isInView, target, duration]);
 
   return (
     <div ref={ref} className="text-center">

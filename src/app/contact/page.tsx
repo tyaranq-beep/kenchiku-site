@@ -216,17 +216,17 @@ export default function ContactPage() {
               <div className="space-y-8 font-sans text-sm text-foreground/80 mb-12">
                 <div>
                   <h3 className="text-[#d4a843] text-xs tracking-widest uppercase mb-2">所在地</h3>
-                  <p className="leading-relaxed">〒107-0062<br/>東京都港区南青山 5-10-23<br/>MONOLITH BLDG 4F</p>
+                  <p className="leading-relaxed">〒000-0000<br/>東京都〇〇区〇〇1-1-1<br/>デモビル30F</p>
                 </div>
                 
                 <div>
                   <h3 className="text-[#d4a843] text-xs tracking-widest uppercase mb-2">直通ダイヤル</h3>
-                  <p className="text-foreground text-[20px] font-medium tracking-wider">03-XXXX-XXXX</p>
+                  <p className="text-foreground text-[20px] font-medium tracking-wider">03-0000-0000</p>
                 </div>
 
                 <div>
                   <h3 className="text-[#d4a843] text-xs tracking-widest uppercase mb-2">メールアドレス</h3>
-                  <p className="tracking-wide">info@monolith-silk.arch</p>
+                  <p className="tracking-wide">info@monolith-demo.jp</p>
                 </div>
 
                 <div>

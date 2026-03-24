@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { mockWorks } from "@/lib/mockData";
 import { PlaceholderImage } from "@/components/PlaceholderImage";
+import Image from "next/image";
 
 const categories = ["すべて", "新築", "リフォーム", "外壁", "足場", "造園", "解体・修復", "内装"];
 
@@ -20,7 +21,9 @@ export default function WorksPage() {
       
       {/* Page Hero */}
       <section className="relative w-full h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden mb-16">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600607688969-a5bfcd646154?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center" />
+        <div className="absolute inset-0">
+          <Image src="/images/works-hero-bg.jpg" alt="施工実績一覧" fill priority className="object-cover" />
+        </div>
         <div className="absolute inset-0 bg-background/70" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
         
@@ -81,15 +84,16 @@ export default function WorksPage() {
                 className="break-inside-avoid relative group cursor-pointer border border-border/10 bg-surface-container-low overflow-hidden block"
               >
                 <Link href={`/works/${work.id}`} className="block h-full relative">
-                  <div className="relative w-full aspect-[4/3] md:aspect-auto md:h-[300px] lg:h-[400px]">
+                  <div className="relative w-full aspect-[4/3] md:aspect-auto md:h-auto overflow-hidden">
                     {/* Add some variance in height for masonry effect based on ID */}
                     <div 
                       className={`relative w-full ${work.id % 3 === 0 ? 'h-[450px]' : work.id % 2 === 0 ? 'h-[350px]' : 'h-[250px]'} max-h-[60vh]`}
                     >
-                      <PlaceholderImage 
-                        label={work.category} 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-                        iconSize={36} 
+                      <Image 
+                        src={work.img} 
+                        alt={work.title} 
+                        fill 
+                        className="object-cover transition-transform duration-700 group-hover:scale-105" 
                       />
                       <div className="absolute inset-0 bg-background/20 group-hover:bg-background/0 transition-colors duration-500" />
                     </div>
