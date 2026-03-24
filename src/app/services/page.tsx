@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import FAQSection from "@/components/sections/faq-section";
 import Image from "next/image";

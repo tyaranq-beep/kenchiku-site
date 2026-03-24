@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import { mockWorks } from "@/lib/mockData";
-import { PlaceholderImage } from "@/components/PlaceholderImage";
 import Image from "next/image";
 
 const categories = ["すべて", "新築", "リフォーム", "外壁", "足場", "造園", "解体・修復", "内装"];
