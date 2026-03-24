@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 
 export default function BeforeAfterSlider({
@@ -12,106 +11,100 @@ export default function BeforeAfterSlider({
   afterImage?: string;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [containerWidth, setContainerWidth] = useState(0);
+  const [pct, setPct] = useState(50); // 0–100 の単一の真実
+  const isDragging = useRef(false);
 
-  // slider x position (0 to 100 representing percentage)
-  const x = useMotionValue(50); // initial 50%
-
-  useEffect(() => {
-    if (containerRef.current) {
-      setContainerWidth(containerRef.current.offsetWidth);
-    }
-    const updateWidth = () => {
-      if (containerRef.current) {
-        setContainerWidth(containerRef.current.offsetWidth);
-      }
-    };
-    window.addEventListener("resize", updateWidth);
-    return () => window.removeEventListener("resize", updateWidth);
+  /** コンテナ内の X 座標をパーセントに変換 */
+  const toPct = useCallback((clientX: number) => {
+    if (!containerRef.current) return 50;
+    const rect = containerRef.current.getBoundingClientRect();
+    return Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
   }, []);
 
-  // Converting percentage motion value to CSS pixel values for the drag constraints
-  const dragX = useMotionValue(0);
+  /* ---- マウスイベント ---- */
+  const onMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    isDragging.current = true;
+  };
 
   useEffect(() => {
-    if (containerWidth > 0) {
-      dragX.set(containerWidth / 2);
-    }
-  }, [containerWidth, dragX]);
+    const onMove = (e: MouseEvent) => {
+      if (!isDragging.current) return;
+      setPct(toPct(e.clientX));
+    };
+    const onUp = () => { isDragging.current = false; };
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onUp);
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseup", onUp);
+    };
+  }, [toPct]);
 
-  // Sync dragX back to percentage x
+  /* ---- タッチイベント ---- */
+  const onTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
+    isDragging.current = true;
+  };
+
   useEffect(() => {
-    return dragX.onChange((latest) => {
-      const percentage = (latest / containerWidth) * 100;
-      x.set(Math.max(0, Math.min(100, percentage)));
-    });
-  }, [dragX, containerWidth, x]);
+    const onTouchMove = (e: TouchEvent) => {
+      if (!isDragging.current) return;
+      setPct(toPct(e.touches[0].clientX));
+    };
+    const onTouchEnd = () => { isDragging.current = false; };
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    window.addEventListener("touchend", onTouchEnd);
+    return () => {
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
+    };
+  }, [toPct]);
 
-  // Use x to compute clip paths
-  const beforeClipPath = useTransform(x, (val) => `inset(0 ${100 - val}% 0 0)`);
-  
   return (
-    <div 
-      ref={containerRef} 
-      className="relative w-full aspect-[4/3] md:aspect-[16/9] overflow-hidden bg-surface-container-high rounded-none touch-none select-none"
+    <div
+      ref={containerRef}
+      className="relative w-full aspect-[4/3] md:aspect-[16/9] overflow-hidden bg-surface-container-high select-none touch-none"
     >
-      {/* After image (background) */}
+      {/* After 画像（背景） */}
       <div className="absolute inset-0">
-        <Image
-          src={afterImage}
-          alt="After"
-          fill
-          className="object-cover"
-        />
+        <Image src={afterImage} alt="施工後" fill className="object-cover" sizes="(max-width: 768px) 100vw, 80vw" quality={90} />
       </div>
 
-      {/* Before image (foreground layer masked) */}
-      <motion.div 
-        className="absolute inset-0 z-10 will-change-transform border-r-[1.5px] border-primary"
-        style={{ clipPath: beforeClipPath }}
+      {/* Before 画像（左側クリップ） */}
+      <div
+        className="absolute inset-0 z-10"
+        style={{ clipPath: `inset(0 ${100 - pct}% 0 0)` }}
       >
-        <Image
-          src={beforeImage}
-          alt="Before"
-          fill
-          className="object-cover"
-        />
-      </motion.div>
+        <Image src={beforeImage} alt="施工前" fill className="object-cover" sizes="(max-width: 768px) 100vw, 80vw" quality={90} />
+      </div>
 
-      {/* Drag handle line */}
-      <motion.div
-        className="absolute top-0 bottom-0 w-[2px] bg-primary z-20"
-        style={{ 
-          left: useTransform(x, (val) => `${val}%`),
-          x: "-50%" 
-        }}
+      {/* 分割ライン */}
+      <div
+        className="absolute top-0 bottom-0 w-[2px] bg-[#d4a843] z-20 pointer-events-none"
+        style={{ left: `${pct}%`, transform: "translateX(-50%)" }}
+      />
+
+      {/* ドラッグハンドル（ラインと同じ left に配置） */}
+      <div
+        className="absolute top-1/2 z-30 w-10 h-10 rounded-full bg-[#d4a843] border-[2px] border-[#061423] flex items-center justify-center cursor-grab active:cursor-grabbing shadow-lg"
+        style={{ left: `${pct}%`, transform: "translate(-50%, -50%)" }}
+        onMouseDown={onMouseDown}
+        onTouchStart={onTouchStart}
       >
-        {/* Actual Draggable Handle */}
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-lg border-[2px] border-surface-container-low cursor-grab active:cursor-grabbing will-change-transform"
-          drag="x"
-          dragConstraints={containerRef}
-          dragElastic={0}
-          dragMomentum={false}
-          onDrag={(e, info) => {
-             if (!containerRef.current) return;
-             const rect = containerRef.current.getBoundingClientRect();
-             const pointerX = info.point.x - rect.left;
-             const percentage = Math.max(0, Math.min(100, (pointerX / rect.width) * 100));
-             x.set(percentage);
-          }}
-        >
-          {/* Arrows */}
-          <div className="flex gap-2">
-            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" className="block rotate-180">
-              <path d="M1.5 1L6.5 6L1.5 11" stroke="#061423" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" className="block">
-              <path d="M1.5 1L6.5 6L1.5 11" stroke="#061423" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-        </motion.div>
-      </motion.div>
+        {/* 左右矢印アイコン */}
+        <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 6H19M1 6L5 2M1 6L5 10M19 6L15 2M19 6L15 10" stroke="#061423" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </div>
+
+      {/* ラベル */}
+      <div className="absolute top-4 left-4 z-20 pointer-events-none">
+        <span className="text-xs font-sans tracking-widest uppercase bg-[#061423]/70 text-white px-3 py-1 border border-white/20">施工前</span>
+      </div>
+      <div className="absolute top-4 right-4 z-20 pointer-events-none">
+        <span className="text-xs font-sans tracking-widest uppercase bg-[#d4a843]/80 text-[#061423] px-3 py-1 font-bold">施工後</span>
+      </div>
     </div>
   );
 }

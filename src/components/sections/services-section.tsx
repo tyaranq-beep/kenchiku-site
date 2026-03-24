@@ -95,6 +95,7 @@ export default function ServicesSection() {
                   alt={service.title} 
                   fill 
                   className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100" 
+                  quality={90}
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-surface-container-high via-surface-container-high/60 to-transparent" />

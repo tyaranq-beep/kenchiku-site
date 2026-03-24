@@ -96,7 +96,7 @@ export default function Home() {
         >
           {/* Hero Background */}
           <div className="absolute inset-0">
-             <Image src="/images/hero-bg.jpg" alt="Hero Image" fill priority className="object-cover" />
+             <Image src="/images/hero-bg.jpg" alt="Hero Image" fill priority className="object-cover" quality={95} />
           </div>
           <div className="absolute inset-0 bg-background/70 z-10" />
           <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background/90 via-background/40 to-transparent z-10" />
@@ -168,9 +168,15 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             variants={skewVariants}
           >
-            <div className="w-full h-full bg-surface-container-highest/80 border-[1px] border-primary/20 flex items-center justify-center">
-            </div>
-            {/* <Image src="/placeholder-arch.jpg" fill alt="Architecture" className="object-cover" /> */}
+            <Image
+                src="/images/philosophy-bg.jpg"
+                alt="企業理念イメージ"
+                fill
+                className="object-cover grayscale-[20%]"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                quality={90}
+              />
+            <div className="absolute inset-0 bg-background/30 z-10" />
           </motion.div>
 
           <div className="flex flex-col justify-center">

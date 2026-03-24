@@ -21,7 +21,7 @@ export default function WorksPage() {
       {/* Page Hero */}
       <section className="relative w-full h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden mb-16">
         <div className="absolute inset-0">
-          <Image src="/images/works-hero-bg.jpg" alt="施工実績一覧" fill priority className="object-cover" />
+          <Image src="/images/works-hero-bg.jpg" alt="施工実績一覧" fill priority className="object-cover" quality={95} />
         </div>
         <div className="absolute inset-0 bg-background/70" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />

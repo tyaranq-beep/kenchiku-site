@@ -77,7 +77,7 @@ export default function ServicesPage() {
                 transition={{ duration: 0.8, delay: index * 0.1, ease: EASE_OUT }}
               >
                 <div className="col-span-1 md:col-span-5 relative w-full aspect-[4/3] rounded-lg overflow-hidden group">
-                  <Image src={service.image} alt={service.title} fill sizes="(max-width: 768px) 100vw, 40vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <Image src={service.image} alt={service.title} fill sizes="(max-width: 768px) 100vw, 40vw" className="object-cover transition-transform duration-700 group-hover:scale-105" quality={90} />
                   <div className="absolute inset-0 bg-background/20 group-hover:bg-background/0 transition-colors duration-500" />
                 </div>
                 <div className="col-span-1 md:col-span-7 md:pl-8">

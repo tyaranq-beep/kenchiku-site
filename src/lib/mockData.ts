@@ -168,7 +168,7 @@ export const mockWorks = [
     year: "2024",
     description: "都市のオアシスとなるルーフトップラウンジ",
     location: "架空県 見本市",
-    img: "/images/work-09-demolition.jpg",
+    img: "/images/work-09-rooftop.jpg",
     gallery: [
       "/images/work-09-gallery-1.jpg",
       "/images/work-09-gallery-2.jpg",

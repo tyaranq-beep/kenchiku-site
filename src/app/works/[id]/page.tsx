@@ -24,6 +24,7 @@ export default function WorkDetail({ params }: { params: { id: string } }) {
             fill
             priority
             className="object-cover"
+            quality={95}
           />
         </div>
         <div className="absolute inset-0 bg-background/60" />
@@ -97,7 +98,7 @@ export default function WorkDetail({ params }: { params: { id: string } }) {
             {/* Left Large Image */}
             <div className="relative w-full h-[400px] md:h-auto overflow-hidden border border-border/10">
               {work.gallery?.[0] && (
-                <Image src={work.gallery[0]} alt={`${work.title} view 1`} fill className="object-cover" />
+                <Image src={work.gallery[0]} alt={`${work.title} view 1`} fill className="object-cover" quality={90} />
               )}
             </div>
             {/* Right 2x2 Grid using Flex/Grid */}
@@ -105,18 +106,18 @@ export default function WorkDetail({ params }: { params: { id: string } }) {
                <div className="grid grid-cols-2 gap-4 min-h-[200px] md:h-full">
                  <div className="relative w-full h-full min-h-[200px] overflow-hidden border border-border/10">
                    {work.gallery?.[1] && (
-                     <Image src={work.gallery[1]} alt={`${work.title} view 2`} fill className="object-cover" />
+                     <Image src={work.gallery[1]} alt={`${work.title} view 2`} fill className="object-cover" quality={90} />
                    )}
                  </div>
                  <div className="relative w-full h-full min-h-[200px] overflow-hidden border border-border/10">
                    {work.gallery?.[2] && (
-                     <Image src={work.gallery[2]} alt={`${work.title} view 3`} fill className="object-cover" />
+                     <Image src={work.gallery[2]} alt={`${work.title} view 3`} fill className="object-cover" quality={90} />
                    )}
                  </div>
                </div>
                <div className="relative w-full h-[300px] md:h-full overflow-hidden border border-border/10">
                  {work.gallery?.[3] && (
-                   <Image src={work.gallery[3]} alt={`${work.title} view 4`} fill className="object-cover" />
+                   <Image src={work.gallery[3]} alt={`${work.title} view 4`} fill className="object-cover" quality={90} />
                  )}
                </div>
             </div>

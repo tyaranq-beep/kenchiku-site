@@ -45,6 +45,7 @@ export default function WorksSection() {
                 alt={work.title} 
                 fill 
                 className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                quality={90}
               />
               <div className="absolute bottom-0 left-0 p-8 z-20 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                 <span className="text-primary font-sans text-xs font-bold tracking-widest mb-3 block uppercase">{work.category}</span>
