@@ -111,7 +111,7 @@ export const mockWorks = [
     year: "2023",
     description: "クリエイティビティを刺激する次世代ワークプレイス",
     location: "架空都市 テスト区",
-    img: "/images/work-06-clinic.jpg",
+    img: "/images/work-06-scaffold.jpg",
     gallery: [
       "/images/work-06-gallery-1.jpg",
       "/images/work-06-gallery-2.jpg",
@@ -130,7 +130,7 @@ export const mockWorks = [
     year: "2024",
     description: "ブランドフィロソフィーを體現した旗艦店",
     location: "架空都市 モック区",
-    img: "/images/work-07-urban.jpg",
+    img: "/images/work-07-roofing.jpg",
     gallery: [
       "/images/work-07-gallery-1.jpg",
       "/images/work-07-gallery-2.jpg",
@@ -168,7 +168,7 @@ export const mockWorks = [
     year: "2024",
     description: "都市のオアシスとなるルーフトップラウンジ",
     location: "架空県 見本市",
-    img: "/images/work-09-warehouse.jpg",
+    img: "/images/work-09-demolition.jpg",
     gallery: [
       "/images/work-09-gallery-1.jpg",
       "/images/work-09-gallery-2.jpg",
@@ -187,7 +187,7 @@ export const mockWorks = [
     year: "2022",
     description: "黒を基調とした至極のリラクゼーション空間",
     location: "架空県 テンプレ市",
-    img: "/images/work-10-rooftop.jpg",
+    img: "/images/work-10-hvac.jpg",
     gallery: [
       "/images/work-10-gallery-1.jpg",
       "/images/work-10-gallery-2.jpg",
